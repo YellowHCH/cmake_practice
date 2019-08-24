@@ -1,0 +1,3 @@
+/home/chhuang/hch/cmake_practice/test2/lib/CMakeFiles/rebuild_cache.dir
+/home/chhuang/hch/cmake_practice/test2/lib/CMakeFiles/mymath.dir
+/home/chhuang/hch/cmake_practice/test2/lib/CMakeFiles/edit_cache.dir

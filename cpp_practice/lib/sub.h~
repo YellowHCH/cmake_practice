@@ -1,0 +1,4 @@
+#include <stdlib.h>
+
+template<typename T>
+T mysub(T &num1, T &num2);

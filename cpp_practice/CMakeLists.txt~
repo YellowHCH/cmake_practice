@@ -1,0 +1,10 @@
+#
+project(mytest2)
+cmake_minimum_required(VERSION 2.6)
+add_subdirectory(lib)
+#
+aux_source_directory(. DIR_SRCS)
+#
+add_executable(mytest2 ${DIR_SRCS})
+#
+target_link_libraries(mytest2 mymath)
