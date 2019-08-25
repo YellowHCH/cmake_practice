@@ -26,6 +26,6 @@ int main(){
   for(size_t i = 0; i < num; ++i){                                               
     std::cout << vec[i] << ", " ;                                              
   }                                                                            
-  std::cout <<"counting" <<  std::endl;
+  std::cout <<"bucketSort" <<  std::endl;
   return 0;
 }
