@@ -102,13 +102,21 @@ bool shellCore(T arr[], size_t m, size_t n, int tk){
   }
   return true;
 }
+
 template<class T>
 bool shellSort(T arr[], size_t m, size_t n){
   // 根据增量序列t1 t2 .. tk 进行k 次排序(使用插入排序)
   if(arr == nullptr || m < 0 || n <= 0){return false;}
   vector<int> TK;
-  TK.push_back(10); TK.push_back(4); TK.push_back(2);TK.push_back(1);
-  for(auto it : TK){ shellCore(arr, m, n, it); }
+  //TK.push_back(10); TK.push_back(4); TK.push_back(2);TK.push_back(1);
+  // 根据元素数量确定shell排序增量序列
+  // Hibbard serial
+  int tk = 1;
+  while(tk < n){
+    TK.push_back(tk);
+    tk = 2*tk+1;
+  }
+  for(auto it = TK.rbegin(); it != TK.rend(); ++it){ shellCore(arr, m, n, *it); }
   return true;
 }
 

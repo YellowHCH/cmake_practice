@@ -24,5 +24,6 @@ int main(){
   testSort(1000,2000);
   testSort(5000,8000);
   testSort(10000,15000);
+  testSort(50000,80000);
   return 0;
 }
