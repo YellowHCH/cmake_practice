@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <iostream>
+#include <time.h>
 using namespace std;//swap冲突
 // swap element
 template<class T>
@@ -106,7 +107,7 @@ bool shellSort(T arr[], size_t m, size_t n){
   // 根据增量序列t1 t2 .. tk 进行k 次排序(使用插入排序)
   if(arr == nullptr || m < 0 || n <= 0){return false;}
   vector<int> TK;
-  TK.push_back(4); TK.push_back(2);TK.push_back(1);
+  TK.push_back(10); TK.push_back(4); TK.push_back(2);TK.push_back(1);
   for(auto it : TK){ shellCore(arr, m, n, it); }
   return true;
 }
@@ -146,12 +147,12 @@ bool mergeSort(T arr[], size_t m, size_t n){
 
 // 6.快速排序 qucikSort
 template<class T>
-size_t myPartition(T arr[], size_t m, size_t n){// m,n是arr首/尾
+int myPartition(T arr[], int m, int n){// m,n是arr首/尾
   //将序列分成两部分，并返回分割点，使得左边的元素不大于分割点，右边元素大于分割点
   if(m == n){return m;}
-  size_t pviot = (m+n)/2;
+  int pviot = (m+n)/2;
   T pVal = arr[pviot];
-  size_t left = m, right = n;
+  int left = m, right = n;
   while(left < right){
     while(arr[right] > pVal){--right;}
     if(right > pviot){
@@ -170,16 +171,16 @@ size_t myPartition(T arr[], size_t m, size_t n){// m,n是arr首/尾
 }
 
 template<class T>
-void quickSortCore(T *arr, size_t m, size_t n){
+void quickSortCore(T *arr, int m, int n){
   // 快排
   if(m >= n){return;}
-  size_t pviot = myPartition(arr, m, n);
+  int pviot = myPartition(arr, m, n);
   quickSortCore(arr, m, pviot-1);
   quickSortCore(arr, pviot+1, n);
 }
 
 template<class T>
-bool quickSort(T arr[], size_t m, size_t n){
+bool quickSort(T arr[], int m, int n){
   //调用快排函数，处理边界情况
   if(arr == nullptr || m < 0 || n <= 0){return false;}
   quickSortCore(arr, m, m+n-1);
@@ -392,3 +393,5 @@ bool bucketSort(int arr[], size_t m, size_t n){
 // 
 
 
+// TEST
+void testSort(size_t num = 3000, int randRange = 4000);
