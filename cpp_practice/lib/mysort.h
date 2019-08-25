@@ -149,7 +149,7 @@ bool mergeSort(T arr[], size_t m, size_t n){
 template<class T>
 int myPartition(T arr[], int m, int n){// m,n是arr首/尾
   //将序列分成两部分，并返回分割点，使得左边的元素不大于分割点，右边元素大于分割点
-  if(m == n){return m;}
+  if(m == n){ return m; }
   int pviot = (m+n)/2;
   T pVal = arr[pviot];
   int left = m, right = n;
