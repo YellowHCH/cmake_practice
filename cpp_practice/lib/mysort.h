@@ -22,6 +22,7 @@
 #include <vector>
 #include <iostream>
 #include <time.h>
+#include <math.h>
 using namespace std;//swap冲突
 // swap element
 template<class T>
@@ -367,14 +368,16 @@ void testList(){
 }
 //template<class T>
 bool bucketSort(int arr[], size_t m, size_t n){
-  int bucketNum = 5;
-  vector<List<int>> buckets(bucketNum);
+  if(arr == nullptr || m < 0 || n <= 0){return false;}
   size_t arrEnd = m+n;
   int localMin = arr[m], localMax = arr[m];
   for(size_t idx = m; idx < arrEnd; ++idx){
     if(arr[idx] < localMin){localMin = arr[idx];}
     else if(arr[idx] > localMax){localMax = arr[idx];}
   }
+  int bucketNum = 5;
+  bucketNum = sqrt(n);
+  vector<List<int>> buckets(bucketNum);
   int bucketRange = (localMax-localMin)/bucketNum + 1;
   //cout << "size of = " << buckets.size() << endl;
   for(size_t idx = m; idx < arrEnd; ++idx){
@@ -393,7 +396,7 @@ bool bucketSort(int arr[], size_t m, size_t n){
       cur = cur->next;
     }
   }
-  
+  return true;
 }
 
 
