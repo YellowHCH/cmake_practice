@@ -1,0 +1,6 @@
+/home/chhuang/hch/cpp/template/build/CMakeFiles/rebuild_cache.dir
+/home/chhuang/hch/cpp/template/build/CMakeFiles/exe_name.dir
+/home/chhuang/hch/cpp/template/build/CMakeFiles/edit_cache.dir
+/home/chhuang/hch/cpp/template/build/sub1/CMakeFiles/rebuild_cache.dir
+/home/chhuang/hch/cpp/template/build/sub1/CMakeFiles/subLib.dir
+/home/chhuang/hch/cpp/template/build/sub1/CMakeFiles/edit_cache.dir

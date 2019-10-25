@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+.././include/head.h
+mymethod.h
+.././include/mymethod.h
+
+.././sub1/include/mymethod.h
+iostream
+-
+
+/home/chhuang/hch/cpp/template/src/main.cpp
+head.h
+/home/chhuang/hch/cpp/template/src/head.h
+
