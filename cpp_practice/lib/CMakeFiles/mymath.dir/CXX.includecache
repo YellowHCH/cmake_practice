@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/add.cpp
+add.h
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/add.h
+
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/add.h
+stdlib.h
+-
+
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/mysort.cpp
+mysort.h
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/mysort.h
+iomanip
+-
+
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/mysort.h
+stdlib.h
+-
+vector
+-
+iostream
+-
+time.h
+-
+
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/sub.cpp
+sub.h
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/sub.h
+
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/sub.h
+

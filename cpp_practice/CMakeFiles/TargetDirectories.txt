@@ -1,0 +1,6 @@
+/home/chhuang/hch/cmake_practice/cpp_practice/CMakeFiles/rebuild_cache.dir
+/home/chhuang/hch/cmake_practice/cpp_practice/CMakeFiles/mySortTest.dir
+/home/chhuang/hch/cmake_practice/cpp_practice/CMakeFiles/edit_cache.dir
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/CMakeFiles/rebuild_cache.dir
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/CMakeFiles/mymath.dir
+/home/chhuang/hch/cmake_practice/cpp_practice/lib/CMakeFiles/edit_cache.dir
