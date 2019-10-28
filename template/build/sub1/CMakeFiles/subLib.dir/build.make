@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chhuang/hch/cpp/template
+CMAKE_SOURCE_DIR = /home/chhuang/hch/cpp/template/template
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chhuang/hch/cpp/template/build
+CMAKE_BINARY_DIR = /home/chhuang/hch/cpp/template/template/build
 
 # Include any dependencies generated for this target.
 include sub1/CMakeFiles/subLib.dir/depend.make
@@ -57,18 +57,42 @@ include sub1/CMakeFiles/subLib.dir/progress.make
 # Include the compile flags for this target's objects.
 include sub1/CMakeFiles/subLib.dir/flags.make
 
+sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o: sub1/CMakeFiles/subLib.dir/flags.make
+sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o: ../sub1/src/myThreadPool.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chhuang/hch/cpp/template/template/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o"
+	cd /home/chhuang/hch/cpp/template/template/build/sub1 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/subLib.dir/src/myThreadPool.cpp.o -c /home/chhuang/hch/cpp/template/template/sub1/src/myThreadPool.cpp
+
+sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/subLib.dir/src/myThreadPool.cpp.i"
+	cd /home/chhuang/hch/cpp/template/template/build/sub1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chhuang/hch/cpp/template/template/sub1/src/myThreadPool.cpp > CMakeFiles/subLib.dir/src/myThreadPool.cpp.i
+
+sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/subLib.dir/src/myThreadPool.cpp.s"
+	cd /home/chhuang/hch/cpp/template/template/build/sub1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chhuang/hch/cpp/template/template/sub1/src/myThreadPool.cpp -o CMakeFiles/subLib.dir/src/myThreadPool.cpp.s
+
+sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o.requires:
+
+.PHONY : sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o.requires
+
+sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o.provides: sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o.requires
+	$(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o.provides.build
+.PHONY : sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o.provides
+
+sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o.provides.build: sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o
+
+
 sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o: sub1/CMakeFiles/subLib.dir/flags.make
 sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o: ../sub1/src/mymethod.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chhuang/hch/cpp/template/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o"
-	cd /home/chhuang/hch/cpp/template/build/sub1 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/subLib.dir/src/mymethod.cpp.o -c /home/chhuang/hch/cpp/template/sub1/src/mymethod.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chhuang/hch/cpp/template/template/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o"
+	cd /home/chhuang/hch/cpp/template/template/build/sub1 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/subLib.dir/src/mymethod.cpp.o -c /home/chhuang/hch/cpp/template/template/sub1/src/mymethod.cpp
 
 sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/subLib.dir/src/mymethod.cpp.i"
-	cd /home/chhuang/hch/cpp/template/build/sub1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chhuang/hch/cpp/template/sub1/src/mymethod.cpp > CMakeFiles/subLib.dir/src/mymethod.cpp.i
+	cd /home/chhuang/hch/cpp/template/template/build/sub1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chhuang/hch/cpp/template/template/sub1/src/mymethod.cpp > CMakeFiles/subLib.dir/src/mymethod.cpp.i
 
 sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/subLib.dir/src/mymethod.cpp.s"
-	cd /home/chhuang/hch/cpp/template/build/sub1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chhuang/hch/cpp/template/sub1/src/mymethod.cpp -o CMakeFiles/subLib.dir/src/mymethod.cpp.s
+	cd /home/chhuang/hch/cpp/template/template/build/sub1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chhuang/hch/cpp/template/template/sub1/src/mymethod.cpp -o CMakeFiles/subLib.dir/src/mymethod.cpp.s
 
 sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o.requires:
 
@@ -83,31 +107,34 @@ sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o.provides.build: sub1/CMakeFiles/su
 
 # Object files for target subLib
 subLib_OBJECTS = \
+"CMakeFiles/subLib.dir/src/myThreadPool.cpp.o" \
 "CMakeFiles/subLib.dir/src/mymethod.cpp.o"
 
 # External object files for target subLib
 subLib_EXTERNAL_OBJECTS =
 
+../lib/libsubLib.so: sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o
 ../lib/libsubLib.so: sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o
 ../lib/libsubLib.so: sub1/CMakeFiles/subLib.dir/build.make
 ../lib/libsubLib.so: sub1/CMakeFiles/subLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chhuang/hch/cpp/template/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library ../../lib/libsubLib.so"
-	cd /home/chhuang/hch/cpp/template/build/sub1 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/subLib.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chhuang/hch/cpp/template/template/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library ../../lib/libsubLib.so"
+	cd /home/chhuang/hch/cpp/template/template/build/sub1 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/subLib.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 sub1/CMakeFiles/subLib.dir/build: ../lib/libsubLib.so
 
 .PHONY : sub1/CMakeFiles/subLib.dir/build
 
+sub1/CMakeFiles/subLib.dir/requires: sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o.requires
 sub1/CMakeFiles/subLib.dir/requires: sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o.requires
 
 .PHONY : sub1/CMakeFiles/subLib.dir/requires
 
 sub1/CMakeFiles/subLib.dir/clean:
-	cd /home/chhuang/hch/cpp/template/build/sub1 && $(CMAKE_COMMAND) -P CMakeFiles/subLib.dir/cmake_clean.cmake
+	cd /home/chhuang/hch/cpp/template/template/build/sub1 && $(CMAKE_COMMAND) -P CMakeFiles/subLib.dir/cmake_clean.cmake
 .PHONY : sub1/CMakeFiles/subLib.dir/clean
 
 sub1/CMakeFiles/subLib.dir/depend:
-	cd /home/chhuang/hch/cpp/template/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chhuang/hch/cpp/template /home/chhuang/hch/cpp/template/sub1 /home/chhuang/hch/cpp/template/build /home/chhuang/hch/cpp/template/build/sub1 /home/chhuang/hch/cpp/template/build/sub1/CMakeFiles/subLib.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chhuang/hch/cpp/template/template/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chhuang/hch/cpp/template/template /home/chhuang/hch/cpp/template/template/sub1 /home/chhuang/hch/cpp/template/template/build /home/chhuang/hch/cpp/template/template/build/sub1 /home/chhuang/hch/cpp/template/template/build/sub1/CMakeFiles/subLib.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sub1/CMakeFiles/subLib.dir/depend
 

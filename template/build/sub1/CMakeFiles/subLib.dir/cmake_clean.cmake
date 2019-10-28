@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/subLib.dir/src/myThreadPool.cpp.o"
   "CMakeFiles/subLib.dir/src/mymethod.cpp.o"
   "../../lib/libsubLib.pdb"
   "../../lib/libsubLib.so"

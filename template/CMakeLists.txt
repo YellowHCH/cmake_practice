@@ -1,7 +1,18 @@
+
 # 设置项目名
 project(project_name)
 # 设置最低cmake版本
 cmake_minimum_required(VERSION 2.8)
+set(CMAKE_BUILD_TYPE "Release")
+# 设置编译器
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+#set(CMAKE_CXX_COMPILER "g++-7")
+add_compile_options(-std=c++11)
+
+set(CXX_FLAGS -Wall -o -lpthread -pthread)
+# 要使用多线程库thread需要添加线程库的包
+find_package(Threads)
+
 # 设置可执行文件输出位置
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 # 设置源代码位置

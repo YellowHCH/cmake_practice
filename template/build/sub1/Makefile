@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chhuang/hch/cpp/template
+CMAKE_SOURCE_DIR = /home/chhuang/hch/cpp/template/template
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chhuang/hch/cpp/template/build
+CMAKE_BINARY_DIR = /home/chhuang/hch/cpp/template/template/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/chhuang/hch/cpp/template/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/chhuang/hch/cpp/template/build/CMakeFiles /home/chhuang/hch/cpp/template/build/sub1/CMakeFiles/progress.marks
-	cd /home/chhuang/hch/cpp/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chhuang/hch/cpp/template/build/CMakeFiles 0
+	cd /home/chhuang/hch/cpp/template/template/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/chhuang/hch/cpp/template/template/build/CMakeFiles /home/chhuang/hch/cpp/template/template/build/sub1/CMakeFiles/progress.marks
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chhuang/hch/cpp/template/template/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/chhuang/hch/cpp/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/clean
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/chhuang/hch/cpp/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/preinstall
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/chhuang/hch/cpp/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/preinstall
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/chhuang/hch/cpp/template/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/chhuang/hch/cpp/template/template/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 sub1/CMakeFiles/subLib.dir/rule:
-	cd /home/chhuang/hch/cpp/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/CMakeFiles/subLib.dir/rule
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f CMakeFiles/Makefile2 sub1/CMakeFiles/subLib.dir/rule
 .PHONY : sub1/CMakeFiles/subLib.dir/rule
 
 # Convenience name for target.
@@ -122,8 +122,35 @@ subLib: sub1/CMakeFiles/subLib.dir/rule
 
 # fast build rule for target.
 subLib/fast:
-	cd /home/chhuang/hch/cpp/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/build
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/build
 .PHONY : subLib/fast
+
+src/myThreadPool.o: src/myThreadPool.cpp.o
+
+.PHONY : src/myThreadPool.o
+
+# target to build an object file
+src/myThreadPool.cpp.o:
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.o
+.PHONY : src/myThreadPool.cpp.o
+
+src/myThreadPool.i: src/myThreadPool.cpp.i
+
+.PHONY : src/myThreadPool.i
+
+# target to preprocess a source file
+src/myThreadPool.cpp.i:
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.i
+.PHONY : src/myThreadPool.cpp.i
+
+src/myThreadPool.s: src/myThreadPool.cpp.s
+
+.PHONY : src/myThreadPool.s
+
+# target to generate assembly for a file
+src/myThreadPool.cpp.s:
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/myThreadPool.cpp.s
+.PHONY : src/myThreadPool.cpp.s
 
 src/mymethod.o: src/mymethod.cpp.o
 
@@ -131,7 +158,7 @@ src/mymethod.o: src/mymethod.cpp.o
 
 # target to build an object file
 src/mymethod.cpp.o:
-	cd /home/chhuang/hch/cpp/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.o
 .PHONY : src/mymethod.cpp.o
 
 src/mymethod.i: src/mymethod.cpp.i
@@ -140,7 +167,7 @@ src/mymethod.i: src/mymethod.cpp.i
 
 # target to preprocess a source file
 src/mymethod.cpp.i:
-	cd /home/chhuang/hch/cpp/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.i
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.i
 .PHONY : src/mymethod.cpp.i
 
 src/mymethod.s: src/mymethod.cpp.s
@@ -149,7 +176,7 @@ src/mymethod.s: src/mymethod.cpp.s
 
 # target to generate assembly for a file
 src/mymethod.cpp.s:
-	cd /home/chhuang/hch/cpp/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.s
+	cd /home/chhuang/hch/cpp/template/template/build && $(MAKE) -f sub1/CMakeFiles/subLib.dir/build.make sub1/CMakeFiles/subLib.dir/src/mymethod.cpp.s
 .PHONY : src/mymethod.cpp.s
 
 # Help Target
@@ -161,6 +188,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... subLib"
 	@echo "... edit_cache"
+	@echo "... src/myThreadPool.o"
+	@echo "... src/myThreadPool.i"
+	@echo "... src/myThreadPool.s"
 	@echo "... src/mymethod.o"
 	@echo "... src/mymethod.i"
 	@echo "... src/mymethod.s"
@@ -175,6 +205,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/chhuang/hch/cpp/template/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/chhuang/hch/cpp/template/template/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
