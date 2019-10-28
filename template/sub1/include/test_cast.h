@@ -20,6 +20,20 @@ class Derived : public Base{
     virtual void foo(){std::cout << "this is Derived class" << std::endl;}
 };
 
+template<typename T1, typename T2>
+struct type_comp{
+    public:
+    bool val = false;
+};
+
+template<typename T1>
+struct type_comp<T1, T1>{
+    public:
+    bool val = true;
+};
+
+
+
 
 void test_cast();
 

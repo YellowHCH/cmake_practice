@@ -1,4 +1,22 @@
 #include "test_cast.h"
+#include <typeinfo>
+template<typename T1, typename T2>
+class type_cmp{
+    public:
+    type_cmp(T1 x1, T2 x2){}
+    //typedef type1 T1;
+    //typedef type2 T2;
+    bool val(){
+        type_comp<T1, T2> tp;
+        return tp.val;
+    }
+
+   
+
+};
+
+
+
 
 void test_cast(){
     // static_cast
@@ -44,6 +62,14 @@ void test_cast(){
     else{
         pb2->foo();
         pd2->foo();
+        Derived *pd3;
+        type_cmp<Base*, Derived*> tp(pb2, pd3); 
+        if(typeid(pb2) == typeid(pd3)){
+            std::cout << "conversion successful" << std::endl;
+        }
+        else{
+            std::cout << "conversion failer" << std::endl;
+        }
     }
     delete pb2;
     delete pd2;
