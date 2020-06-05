@@ -1,1 +1,1 @@
-/root/tmp/build/CMakeFiles/test.dir
+/root/cmake_practice/tmp/build/CMakeFiles/test.dir

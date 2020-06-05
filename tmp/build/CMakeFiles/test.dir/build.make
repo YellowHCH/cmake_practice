@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/tmp
+CMAKE_SOURCE_DIR = /root/cmake_practice/tmp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/tmp/build
+CMAKE_BINARY_DIR = /root/cmake_practice/tmp/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/test.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/test.dir/flags.make
 
 CMakeFiles/test.dir/test.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/test.cpp.o: ../test.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /root/tmp/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /root/cmake_practice/tmp/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/test.dir/test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/test.cpp.o -c /root/tmp/test.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test.dir/test.cpp.o -c /root/cmake_practice/tmp/test.cpp
 
 CMakeFiles/test.dir/test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /root/tmp/test.cpp > CMakeFiles/test.dir/test.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /root/cmake_practice/tmp/test.cpp > CMakeFiles/test.dir/test.cpp.i
 
 CMakeFiles/test.dir/test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /root/tmp/test.cpp -o CMakeFiles/test.dir/test.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /root/cmake_practice/tmp/test.cpp -o CMakeFiles/test.dir/test.cpp.s
 
 CMakeFiles/test.dir/test.cpp.o.requires:
 .PHONY : CMakeFiles/test.dir/test.cpp.o.requires
@@ -100,6 +100,6 @@ CMakeFiles/test.dir/clean:
 .PHONY : CMakeFiles/test.dir/clean
 
 CMakeFiles/test.dir/depend:
-	cd /root/tmp/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/tmp /root/tmp /root/tmp/build /root/tmp/build /root/tmp/build/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/cmake_practice/tmp/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/cmake_practice/tmp /root/cmake_practice/tmp /root/cmake_practice/tmp/build /root/cmake_practice/tmp/build /root/cmake_practice/tmp/build/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test.dir/depend
 
