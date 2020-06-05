@@ -1,0 +1,21 @@
+filename : file3
+filename : file4
+filename : file2
+filename : file1
+filename : file5
+there are 5 file(s) in ./mydir/ dir
+begin test process
+this is child process
+  PID  PPID S TT       COMMAND
+ 7931 16214 S pts/1    ./test
+ 7933  7931 R pts/1    ps -o pid,ppid,state,tty,command
+16214 16207 S pts/1    -bash
+filename : file3
+filename : file4
+filename : file2
+filename : file1
+filename : file5
+there are 5 file(s) in ./mydir/ dir
+begin test process
+this is parent process
+child process 7932 terminated
