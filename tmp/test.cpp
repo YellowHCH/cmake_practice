@@ -1,4 +1,5 @@
- #include <iostream>
+#if 0
+#include <iostream>
  #include <pthread.h>
  #include <stdio.h>
  //#include <thread>
@@ -718,10 +719,380 @@ public:
 private:
 };
 
+
+
+
+///
+void test_arrobj()
+{
+  //int *vec = new int*[10];
+}
+
+///
+void get_messagetime()
+{
+  char messageid[] = "bizmx11t1590551602tkdhiu935";
+  char *find_t = messageid;
+  while(*find_t != '\0' && *find_t != 't'){++find_t;}
+  if(*find_t == '\0' || *(++find_t) == '\0'){return;}
+  std::string str(find_t, 10);
+  //time_t t = std::stol(str);
+  time_t t = atoi(str.c_str());
+  std::cout << "time == " << t << std::endl;
+}
+#endif
+/// threadtimer
+#include <thread>
+#include <functional>
+#include <chrono>
+#include <iostream>
+
+std::function<void()> fooo = [](){std::cout << "thread gogogo\n";};
+
+void fooo1()
+{
+  std::cout << "thread gogogo1\n";
+}
+
+int fooo2()
+{
+  std::cout << "thread gogogo2\n";
+}
+
+int fooo3(int val)
+{
+  std::cout << "thread gogogo3 == val\n";
+}
+
+std::function<void()> fooo31 = std::bind(fooo3, 255);
+
+class ThreadTimer{
+public:
+  ThreadTimer(std::function<void()> task)
+  {
+    m_task = task;
+  }
+
+  std::function<void()> thread_foo = [this]()
+  {
+    while(isRuning){
+      m_task();
+      std::cout << "this is thread_foo, will sleep 1s\n";
+      std::chrono::milliseconds dura( 1000 );
+      std::this_thread::sleep_for(dura);
+    }
+  };
+  
+  void Run()
+  {
+    isRuning = true;
+    std::thread t1(thread_foo);
+    t1.detach();
+    std::chrono::milliseconds dura( 5000 );
+    std::this_thread::sleep_for(dura);
+    std::cout << "Run stop ...\n";
+    isRuning = false;
+    
+  }
+
+  void Stop()
+  {
+    isRuning = false;
+  }
+  bool isRuning = false;
+  std::function<void()> m_task;
+};
+
+void test_thredtimer()
+{
+  ThreadTimer tt(fooo31);
+  tt.Run();
+  
+}
+
+class QyThreadTimer{
+public:
+  QyThreadTimer(std::function<void()> task, int intervals = 0, int times = 0)
+    : m_task(task), m_isRunning(false), m_interval(intervals * kMillisecondPerSecond), m_iTimesCnt(-1), m_iTimesLimit(times)
+  {
+
+  }
+
+  ~QyThreadTimer()
+  {
+    Stop();
+  }
+
+  void Stop(){ m_isRunning = false; }
+
+  void Start()
+  {
+    m_isRunning = true;
+    std::thread _thread(Run);
+    _thread.detach();
+    return;
+  }
+
+  std::function<void()> Run = [this]()
+			      {
+				if(m_interval == std::chrono::milliseconds(0)){return;}
+				while(m_isRunning && m_iTimesCnt < m_iTimesLimit)
+				  {
+				    if(m_task != nullptr)
+				      m_task();
+				    std::this_thread::sleep_for(m_interval);
+				    if(m_iTimesLimit > 0)
+				      ++m_iTimesCnt;
+				  }
+			      };
+
+private:
+  std::function<void()> m_task = nullptr;
+  bool m_isRunning;
+  std::chrono::milliseconds m_interval;
+  static const int kMillisecondPerSecond = 1000;
+  int m_iTimesCnt;
+  int m_iTimesLimit;
+};
+
+class foos{
+public:
+  static void foo(){
+    std::cout << "val before is : " << val << std::endl;
+    ++val;
+    std::cout << "val after is : " << val << std::endl;
+  }
+private:
+  static int val;
+};
+int foos::val = 0;
+
+std::function<void()> foosfoo = [](){
+				  foos::foo();
+				};
+
+void test_qythreadtimer()
+{
+  std::cout << "start test qy threadtimer\n";
+  QyThreadTimer qytt(foosfoo, 1);
+  qytt.Start();
+  std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+  std::cout << "stop test qy threadtimer\n" ;
+  qytt.Stop();
+}
+
+/// smart pointer
+#include <memory>   // unique_ptr
+
+class TestSmartPointer{
+public:
+  // unique_ptr<>
+  // unique_pte does not allow more than two unique_ptr pointer ponit to obj
+  // so obj is unique pointed by pointer
+  void test_unique_ptr()
+  {
+    std::cout << __func__ << std::endl;
+    std::unique_ptr<Data> pData_unique(new Data);
+    std::cout <<"unique_ptr: size of data is " << sizeof(*pData_unique) << std::endl;
+    std::unique_ptr<Data> pData_unique2(pData_unique.release());
+    pData_unique2 = nullptr;
+    if(pData_unique != nullptr){ std::cout << "unique_ptr release failer\n"; }
+  }
+  // auto_ptr
+  void test_auto_ptr()
+  {
+    // auto_ptr was out
+  }
+  // shared_ptr
+  void test_shared_ptr()
+  {
+    // shared_ptr 可以共享所有权
+    std::cout << __func__ << std::endl;
+    std::shared_ptr<Data> pData_shared(new Data);
+    std::shared_ptr<Data> pData_shared2 = pData_shared;
+  }
+  // weak_ptr
+  void test_weak_ptr()
+  {
+    // weak_ptr 不改变对象的引用计数，作为旁观者监视对象是否还存在，用以辅助shared_ptr，例如
+    // 在将智能指针作为对象进行传参或者返回时会隐式的构造新的shared_ptr，这会导致增加引用计数导致
+    // 对象没有被正确的释放，造成内存泄漏;
+    std::cout << __func__ << std::endl;
+    std::shared_ptr<Data> pData_shared(new Data);
+    std::weak_ptr<Data> pData_weak = pData_shared;
+    std::cout << "count of shared_ptr : " << pData_weak.use_count() << std::endl;
+    std::shared_ptr<Data> pData_shared2 = pData_shared;
+    std::cout << "count of shared_ptr : " << pData_weak.use_count() << std::endl;
+    if(pData_weak.expired()){std::cout << "obj safe\n";}
+    else{std::cout<<"obj died\n";}
+    std::shared_ptr<Data> pData_shared3 = pData_weak.lock();
+    if(pData_shared3){std::cout << "transfer success\n";}
+  }
+  // test all
+  void test_all()
+  {
+    std::cout << "start test_all\n";
+    test_unique_ptr();
+
+    test_auto_ptr();
+
+    test_shared_ptr();
+
+    test_weak_ptr();
+  }
+  
+private:
+  struct Data{
+  public:
+    Data(){
+      std::cout << "construct Data obj\n";
+    }
+    ~Data()
+    {
+      std::cout << "deconstruct Data obj\n";
+    }
+    // 4 byte 对齐，224bytes
+    int val1[10];     // 10*4
+    double val2[10];  // 10*8
+    char val3[100];   // 100*1
+  };
+};
+
+// 实现一个简单的shared_ptr
+#include <mutex>
+
+template<typename T>
+class myShared_ptr_Proxy{
+public:
+  myShared_ptr_Proxy<T>():m_count(0), m_ptr(nullptr)
+  {}
+
+  myShared_ptr_Proxy<T>(T *_ptr): m_count(1), m_ptr(_ptr)
+  {}
+
+  ~myShared_ptr_Proxy<T>()
+  {
+    delete m_ptr;
+  }
+
+  T* &Get_ptr()
+  {
+    return m_ptr;
+  }
+
+  size_t Get_count()
+  {
+    return m_count;
+  }
+
+  void AddPtr()
+  {
+    ++m_count;
+  }
+
+  size_t DeletePtr()
+  {
+    return --m_count;
+  }
+  
+private:
+  size_t m_count;
+  T *m_ptr;
+  std::mutex m_proxy_mutex;// for thread safe
+};
+
+template<typename T>
+class myShared_ptr{
+public:
+  myShared_ptr<T>() : m_proxy(nullptr)
+  {
+    
+  }
+
+  myShared_ptr<T>(T *_ptr)
+  {
+    m_proxy = new myShared_ptr_Proxy<T>(_ptr);
+  }
+
+  myShared_ptr<T>(myShared_ptr& _myshared_ptr)
+  {
+    this->m_proxy = _myshared_ptr.Get_Proxy();
+    this->m_proxy->AddPtr();
+  }
+
+  ~myShared_ptr<T>()
+  {
+    if(!m_proxy->DeletePtr())
+      {
+	delete m_proxy;
+      }
+    m_proxy = nullptr;
+  }
+
+  myShared_ptr & operator=(myShared_ptr& _myshared_ptr)
+  {
+    this->m_proxy = _myshared_ptr.Get_Proxy();
+    this->m_proxy->AddPtr();
+    return *this;
+  }
+
+  myShared_ptr_Proxy<T>* Get_Proxy()const
+  {
+    return m_proxy;
+  }
+
+  
+  T* Get_ptr()const
+  {
+    return this->m_proxy->Get_ptr();
+  }
+
+  size_t Get_count()const
+  {
+    return this->m_proxy->Get_count();
+  }
+  
+  myShared_ptr& operator=(const myShared_ptr& myshared_ptr)
+  {
+    m_proxy = myshared_ptr.Get_Proxy();
+    return *this;
+  }
+
+  
+  
+private:
+  myShared_ptr_Proxy<T> *m_proxy;
+  
+};
+//
+struct Data{
+  public:
+    Data(){
+      std::cout << "construct Data obj\n";
+    }
+    ~Data()
+    {
+      std::cout << "deconstruct Data obj\n";
+    }
+    // 4 byte 对齐，224bytes
+    int val1[10];     // 10*4
+    double val2[10];  // 10*8
+    char val3[100];   // 100*1
+  };
+void test_mysharedptr()
+{
+  std::cout << __func__ << std::endl;
+  myShared_ptr<Data> myshared_ptr(new Data);
+  std::cout <<"ptr count == " << myshared_ptr.Get_count() << std::endl;
+  myShared_ptr<Data> myshared_ptr2 = myshared_ptr;
+  std::cout <<"ptr count == " << myshared_ptr.Get_count() << std::endl;
+  
+}
+
 int main()
 {
         ;
-	boost::gregorian::date d(boost::gregorian::day_clock::local_day());
+	//boost::gregorian::date d(boost::gregorian::day_clock::local_day());
 	/*
 	data = 0;
 	const char dirname[] = "./mydir/";
@@ -793,9 +1164,27 @@ int main()
 	
 	#endif
 
-	#if 1
+	#if 0
 	BacktraceTest backtrace_test;
 	backtrace_test.test_getBacktrace();
+	#endif
+
+	#if 0
+	get_messagetime();
+	#endif
+
+	#if 0
+	//test_thredtimer();
+	test_qythreadtimer();
+	#endif
+
+	#if 0
+	TestSmartPointer testsmartpointer;
+	testsmartpointer.test_all();
+	#endif
+
+	#if 1
+	test_mysharedptr();
 	#endif
 	//pthread_exit(NULL);
 	return 0;

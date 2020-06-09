@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/root/cmake_practice/note/more_effective_c++.cpp
+more_effective_c++.h
+/root/cmake_practice/note/more_effective_c++.h
+iostream
+-
+
+/root/cmake_practice/note/more_effective_c++.h
+
