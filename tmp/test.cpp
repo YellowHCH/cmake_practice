@@ -967,31 +967,48 @@ public:
   myShared_ptr_Proxy<T>():m_count(0), m_ptr(nullptr)
   {}
 
-  myShared_ptr_Proxy<T>(T *_ptr): m_count(1), m_ptr(_ptr)
-  {}
+  explicit myShared_ptr_Proxy<T>(T *_ptr)/*: m_count(1), m_ptr(_ptr)*/
+  {
+    std::lock_guard<std::mutex> lg(m_proxy_mutex);
+    if(m_count > 0 && m_ptr != nullptr)
+    {
+      return;
+    }
+    else
+    {
+      m_count = 1;
+      m_ptr = _ptr;
+    }
+  }
 
   ~myShared_ptr_Proxy<T>()
   {
+    std::lock_guard<std::mutex> lg(m_proxy_mutex);
     delete m_ptr;
+    m_ptr = nullptr;
   }
 
   T* &Get_ptr()
   {
+    std::lock_guard<std::mutex> lg(m_proxy_mutex);
     return m_ptr;
   }
 
   size_t Get_count()
   {
+    std::lock_guard<std::mutex> lg(m_proxy_mutex);
     return m_count;
   }
 
   void AddPtr()
   {
+    std::lock_guard<std::mutex> lg(m_proxy_mutex);
     ++m_count;
   }
 
   size_t DeletePtr()
   {
+    std::lock_guard<std::mutex> lg(m_proxy_mutex);
     return --m_count;
   }
   
@@ -999,6 +1016,7 @@ private:
   size_t m_count;
   T *m_ptr;
   std::mutex m_proxy_mutex;// for thread safe
+  
 };
 
 template<typename T>
