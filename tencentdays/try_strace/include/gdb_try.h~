@@ -1,0 +1,19 @@
+#pragma once
+
+#include <iostream>
+#include <time.h>
+
+#define TIMEOUT_CHECK_MESSAGEID_CNT  24
+
+#define GET_INSERT_TIMEOUT_INDEX(TIME) \
+  ((tNow % (6*3600)) / 900) % TIMEOUT_CHECK_MESSAGEID_CNT;      \
+
+
+
+void printf_module();
+
+void test_macro_fun()
+{
+  time_t now = time(0);
+  std::cout << "is " << GET_INSERT_TIMEOUT_INDEX(now) << std::endl;
+}

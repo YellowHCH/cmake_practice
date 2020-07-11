@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+.././try_gdb/include/gdb_try.h
+iostream
+-
+time.h
+-
+
+/root/cmake_practice/tencentdays/try_gdb/src/gdb_try.cpp
+gdb_try.h
+/root/cmake_practice/tencentdays/try_gdb/src/gdb_try.h
+assert.h
+-
+string.h
+-
+

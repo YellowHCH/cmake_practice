@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/root/cmake_practice/note/cppstl.h
+iostream
+-
+bitset
+-
+time.h
+-
+vector
+-
+list
+-
+
+/root/cmake_practice/note/test.cpp
+cppstl.h
+/root/cmake_practice/note/cppstl.h
+

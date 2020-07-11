@@ -80,6 +80,11 @@ void printTypeSize()
   long int iTime = std::stol(strFile);
   std::cout << "strFile -> " <<strFile << std::endl;
   std::cout << "iTime -> " <<iTime << std::endl;
+  int cnt = 0;
+  for(int i = 0; i < 999; ++i){
+    cnt += 9999999;
+    std::cout << "cnt == \t" <<cnt << std::endl;
+  }
 }
 
 int main()

@@ -1,1 +1,2 @@
 /root/cmake_practice/note/build/CMakeFiles/more_effective_c++.dir
+/root/cmake_practice/note/build/CMakeFiles/test.dir

@@ -1,0 +1,5 @@
+/root/cmake_practice/tencentdays/build/try_coroutine/CMakeFiles/coroutine_try.dir
+/root/cmake_practice/tencentdays/build/try_gdb/CMakeFiles/pdb_try.dir
+/root/cmake_practice/tencentdays/build/try_strace/CMakeFiles/strace_try.dir
+/root/cmake_practice/tencentdays/build/sub1/CMakeFiles/subLib.dir
+/root/cmake_practice/tencentdays/build/CMakeFiles/test_exe.dir

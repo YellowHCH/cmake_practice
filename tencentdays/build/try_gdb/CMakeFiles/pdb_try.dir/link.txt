@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -std=c++11 -g   -shared -Wl,-soname,libpdb_try.so -o ../../lib/libpdb_try.so CMakeFiles/pdb_try.dir/src/gdb_try.cpp.o -lpthread 
