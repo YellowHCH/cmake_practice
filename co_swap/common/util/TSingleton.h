@@ -24,34 +24,34 @@
 namespace goddard
 {
 
-		template <typename T>
-				class TSingleton
-				{
-						public:
-								static T& getInstance()
-								{
-										pthread_once(&_ponce, &TSingleton::init);
-										return *instance;
-								}
-						protected:
-								TSingleton() {}
-								TSingleton(const TSingleton &) {}
-						private:
-								static void init()
-								{
-										instance = new T();
-								}
+        template <typename T>
+        class TSingleton
+        {
+        public:
+                static T& getInstance()
+                        {
+                                pthread_once(&_ponce, &TSingleton::init);
+                                return *instance;
+                        }
+        protected:
+                TSingleton() {}
+                TSingleton(const TSingleton &) {}
+        private:
+                static void init()
+                        {
+                                instance = new T();
+                        }
 
-						private:
-								static pthread_once_t _ponce;
-								static T *instance;
-				};
+        private:
+                static pthread_once_t _ponce;
+                static T *instance;
+        };
 
-		template <typename T>
-				pthread_once_t TSingleton<T>::_ponce = PTHREAD_ONCE_INIT;
+        template <typename T>
+        pthread_once_t TSingleton<T>::_ponce = PTHREAD_ONCE_INIT;
 
-		template <typename T>
-				T* TSingleton<T>::instance = NULL;
+        template <typename T>
+        T* TSingleton<T>::instance = NULL;
 }
 
 #endif

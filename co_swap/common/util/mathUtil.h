@@ -23,18 +23,18 @@
 
 namespace goddard
 {
-		inline bool isodd(int64_t num)
-		{
-				if (num & 1)
-						return true;
-				else
-						return false;
-		}
+        inline bool isodd(int64_t num)
+        {
+                if (num & 1)
+                        return true;
+                else
+                        return false;
+        }
 
-		inline bool iseven(int64_t num)
-		{
-				return !isodd(num);
-		}
+        inline bool iseven(int64_t num)
+        {
+                return !isodd(num);
+        }
 }
 
 #endif

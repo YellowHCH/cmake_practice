@@ -42,16 +42,27 @@ enum {
   kRSP = 13,
 };
 
+/*
+  coroutine stack info
+  regs: registor for used to matain context
+*/
 struct coctx_t
 {
 	void *regs[ 14 ];
 	size_t ss_size;
-	char *ss_sp;
+	char *ss_sp; // button of stack
 
 };
 
+// pointer of routine function 
 typedef void *(*pfn_co_routine_t)( void * );
 
+/*
+  struct of routine
+  pfn: function
+  ctx: function enviroment
+  arg: arguments belong to pfn
+*/
 struct stroutine
 {
 	pfn_co_routine_t pfn;
@@ -59,8 +70,10 @@ struct stroutine
 	void *arg;	
 };
 
+// interface to make stack for coroutine
 int ctx_make(coctx_t *ctx, pfn_co_routine_t pfn, const void *s, const void *s1);
 
+// init coroutine(expecialy stack mem)
 stroutine * co_init(pfn_co_routine_t pfn, int stack_size = 8 * 1024, void *arg1 = NULL, void *arg2 = NULL);
 void co_resume(stroutine *cur, stroutine *next);
 

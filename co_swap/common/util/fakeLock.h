@@ -18,17 +18,17 @@
 
 namespace goddard
 {
-		class FakeLock
-		{
-				public:
-						FakeLock() {}
-						virtual ~FakeLock() {}
-						void lock() {}
-						bool try_lock() { return true; }
-						template <typename T>
-								bool try_lock_for(T &t) { return true; }
-						template <typename T>
-								bool try_lock_util(T &t) { return true; }
-						void unlock() {}
-		}
+        class FakeLock
+        {
+        public:
+                FakeLock() {}
+                virtual ~FakeLock() {}
+                void lock() {}
+                bool try_lock() { return true; }
+                template <typename T>
+                bool try_lock_for(T &t) { return true; }
+                template <typename T>
+                bool try_lock_util(T &t) { return true; }
+                void unlock() {}
+        }
 }

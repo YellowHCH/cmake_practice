@@ -9,7 +9,7 @@ public:
 	}
 
 	~FileOperatorGuard()
-	{
+        {
 		if (NULL != fp)
 		{
 			fclose(fp);

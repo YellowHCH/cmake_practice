@@ -4,31 +4,31 @@ class FileOperatorGuard
 {
 public:
 	FileOperatorGuard(const char *p)
-	{
-		fp = fopen(p, "r");
-	}
+                {
+                        fp = fopen(p, "r");
+                }
 
 	~FileOperatorGuard()
-	{
-		if (NULL != fp)
-		{
-			fclose(fp);
-		}
-	}
+                {
+                        if (NULL != fp)
+                        {
+                                fclose(fp);
+                        }
+                }
 
 	operator FILE *()
-	{
-		return fp;
-	}
+                {
+                        return fp;
+                }
 
 	void reset(const char *p)
-	{
-		if (NULL != fp)
-		{
-			fclose(fp);
-		}
-		fp = fopen(p, "r");
-	}
+                {
+                        if (NULL != fp)
+                        {
+                                fclose(fp);
+                        }
+                        fp = fopen(p, "r");
+                }
 
 private:
 	FILE* fp;
@@ -71,21 +71,21 @@ struct stTotalCpuInfo
 	unsigned long idle;
 
 	operator unsigned long ()
-	{
-		return user + nice + system + idle;
-	}
+                {
+                        return user + nice + system + idle;
+                }
 
 	void LogDebug(const char *prefix)
-	{
-		LOG_DEBUG("%s stTotalCpuInfo info utime: %lu, stime: %lu, cutime: %lu, cstime: %lu, total %lu \n",
-			prefix, user, nice, system, idle, this->operator unsigned long ());
-	}
+                {
+                        LOG_DEBUG("%s stTotalCpuInfo info utime: %lu, stime: %lu, cutime: %lu, cstime: %lu, total %lu \n",
+                                  prefix, user, nice, system, idle, this->operator unsigned long ());
+                }
 
 	void LogError(const char *prefix)
-	{
-		LOG_ERROR("%s stTotalCpuInfo info utime: %lu, stime: %lu, cutime: %lu, cstime: %lu, total %lu \n",
-			prefix, user, nice, system, idle, this->operator unsigned long ());
-	}
+                {
+                        LOG_ERROR("%s stTotalCpuInfo info utime: %lu, stime: %lu, cutime: %lu, cstime: %lu, total %lu \n",
+                                  prefix, user, nice, system, idle, this->operator unsigned long ());
+                }
 };
 
 struct stProcCpuInfo
@@ -97,21 +97,21 @@ struct stProcCpuInfo
 	unsigned long cstime; //all dead time
 
 	operator unsigned long ()
-	{
-		return utime + stime + cutime + cstime;
-	}
+                {
+                        return utime + stime + cutime + cstime;
+                }
 
 	void LogDebug(const char *prefix)
-	{
-		LOG_DEBUG("%s stProcCpuInfo info utime: %lu, stime: %lu, cutime: %lu, cstime: %lu, total %lu \n",
-			prefix, utime, stime, cutime, cstime, this->operator unsigned long ());
-	}
+                {
+                        LOG_DEBUG("%s stProcCpuInfo info utime: %lu, stime: %lu, cutime: %lu, cstime: %lu, total %lu \n",
+                                  prefix, utime, stime, cutime, cstime, this->operator unsigned long ());
+                }
 
 	void LogError(const char *prefix)
-	{
-		LOG_ERROR("%s stProcCpuInfo info utime: %lu, stime: %lu, cutime: %lu, cstime: %lu, total %lu \n",
-			prefix, utime, stime, cutime, cstime, this->operator unsigned long ());
-	}
+                {
+                        LOG_ERROR("%s stProcCpuInfo info utime: %lu, stime: %lu, cutime: %lu, cstime: %lu, total %lu \n",
+                                  prefix, utime, stime, cutime, cstime, this->operator unsigned long ());
+                }
 };
 
 bool GetCpuUseInfo(int &cpuPercent)
@@ -147,8 +147,8 @@ bool GetCpuUseInfo(int &cpuPercent)
 		unsigned long majflt;
 		unsigned long cmajflt;
 		fscanf(fOperator, "%d\t%s\t%c\t%d\t%d\t%d\t%d\t%d\t%u\t%lu\t%lu\t%lu\t%lu\t%lu\t%lu\t%lu\t%lu",
-			&pid, comm, &state, &ppid, &pgrp, &session, &tty_nr, &tpgid, &flags, &minflt, &cminflt, &majflt,
-			&cmajflt, &procCpuInfo.utime, &procCpuInfo.stime, &procCpuInfo.cutime, &procCpuInfo.cstime);
+                       &pid, comm, &state, &ppid, &pgrp, &session, &tty_nr, &tpgid, &flags, &minflt, &cminflt, &majflt,
+                       &cmajflt, &procCpuInfo.utime, &procCpuInfo.stime, &procCpuInfo.cutime, &procCpuInfo.cstime);
 	}
 	else
 	{

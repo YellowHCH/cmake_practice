@@ -13,14 +13,14 @@ struct stMemInfo
 	unsigned long vsz;
 	unsigned long rss;
 	void LogDebug()
-	{
-		LOG_DEBUG("stMemInfo info totalSize: %lu, rss: %lu, vsz: %lu", totalSize, vsz, rss);
-	}
+                {
+                        LOG_DEBUG("stMemInfo info totalSize: %lu, rss: %lu, vsz: %lu", totalSize, vsz, rss);
+                }
 
 	void LogError()
-	{
-		LOG_ERROR("stMemInfo info totalSize: %lu, rss: %lu, vsz: %lu", totalSize, vsz, rss);
-	}
+                {
+                        LOG_ERROR("stMemInfo info totalSize: %lu, rss: %lu, vsz: %lu", totalSize, vsz, rss);
+                }
 };
 
 bool GetMemInfo(stMemInfo &info);
