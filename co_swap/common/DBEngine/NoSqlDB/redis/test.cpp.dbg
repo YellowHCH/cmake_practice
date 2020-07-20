@@ -1,0 +1,455 @@
+#include "redisManager.h"
+
+using namespace goddard;
+
+int main()
+{
+		RedisManager &redisService = RedisManager::getInstance();
+		bool ret = false;
+		ret = redisService.init();
+		std::cout << "start ret:" << ret << std::endl;
+
+		/* key */
+		int64_t delCnt = 0;
+		ret = redisService.delKey("123", delCnt);
+		std::cout << ret << ", delCnt:" << delCnt << std::endl;
+
+		int64_t exists = 2;
+		ret = redisService.existsKey("123", exists);
+		std::cout << ret << ", exists:" << exists << std::endl;
+
+		bool setSucc = false;
+		ret = redisService.expireKey("321", 1000, setSucc);
+		std::cout << ret << ", setSucc:" << setSucc << std::endl;
+		int64_t ttl = 0;
+		ret = redisService.ttlKey("321", ttl);
+		std::cout << ret << ", ttl:" << ttl << std::endl;
+
+		std::string typeStr;
+		enum KEYTYPE type;
+		ret = redisService.typeKey("321", typeStr, type);
+		std::cout << ret << ", typeStr:" << typeStr << ", type:" << type << std::endl;
+
+		/* end key */
+
+		/* string */
+		int64_t res;
+		ret = redisService.decrString("321", &res);
+		std::cout << ret << ", res:" << res << std::endl;
+		ret = redisService.decrByString("321", 300, &res);
+		std::cout << ret << ", res:" << res << std::endl;
+
+		ret = redisService.incrString("321", &res);
+		std::cout << ret << ", res:" << res << std::endl;
+		ret = redisService.incrByString("321", 200, &res);
+		std::cout << ret << ", res:" << res << std::endl;
+
+		ret = redisService.setString(std::make_pair("123", "1000"));
+		std::cout << ret << std::endl;
+
+		std::string str;
+		ret = redisService.getString("123", str);
+		std::cout << ret << ", str:" << str << std::endl;
+
+		str.clear();
+		ret = redisService.getString("test123", str);
+		std::cout << ret << ", str:" << str << std::endl;
+
+		/* end string */
+
+		/* hash */
+		bool bExists = false;
+		ret = redisService.hsetHash("h", "123", "xxxx");
+		std::cout << ret << std::endl;
+		ret = redisService.hexistsHash("h", "123", bExists);
+		std::cout << ret << ", exists:" << bExists << std::endl;
+
+		ret = redisService.hexistsHash("h", "321", bExists);
+		std::cout << ret << ", exists:" << bExists << std::endl;
+
+		ret = redisService.hexistsHash("h1", "123", bExists);
+		std::cout << ret << ", exists:" << bExists << std::endl;
+
+		ret = redisService.hgetHash("h", "123", str);
+		std::cout << ret << ", str:" << str << std::endl;
+
+		ret = redisService.hdelHash("h", "123");
+		std::cout << ret << std::endl;
+
+		ret = redisService.hexistsHash("h", "123", bExists);
+		std::cout << ret << ", exists:" << bExists << std::endl;
+
+		for (auto i = 0; i < 100; ++i)
+		{
+				std::ostringstream oss;
+				oss << i << " field";
+				std::string field = oss.str();
+				oss.str("");
+				oss << i << " value";
+				ret = redisService.hsetHash("h", field.c_str(), oss.str());
+		}
+
+		kvPairVecType fieldValueVec;
+		ret = redisService.hgetallHash("h", fieldValueVec);
+		for (uint32_t i = 0; i < fieldValueVec.size(); ++i)
+		{
+				std::cout << "field: " << fieldValueVec[i].first;
+				std::cout << ", value: " << fieldValueVec[i].second;
+
+				int64_t len = 0;
+				ret = redisService.hstrlenHash("h", fieldValueVec.at(i).first.c_str(), len);
+				std::cout << " , ret: " << ret << ", len:" << len << std::endl;
+				std::cout << std::endl;
+		}
+
+		stringVecType fieldVec;
+		ret = redisService.hkeysHash("h", fieldVec);
+		std::cout << ret << ", fieldSize: " << fieldVec.size() << std::endl;
+		for (uint32_t i = 0; i < fieldVec.size(); ++i)
+		{
+				std::cout << "field: " << fieldVec[i] << std::endl;
+		}
+
+		int64_t len = 0;
+		ret = redisService.hlenHash("h", len);
+		std::cout << ret << ", hlen: " << len << std::endl;
+
+		stringVecType valueVec;
+		ret = redisService.hvalsHash("h", valueVec);
+		std::cout << ret << "; valueVec Size:" << valueVec.size() << std::endl;
+		for (uint32_t i = 0; i < valueVec.size(); ++i)
+				std::cout << valueVec[i] << std::endl;
+		/* end hash */
+
+		/* list */
+
+		delCnt = 0;
+		ret = redisService.delKey("l", delCnt);
+		std::cout << ret << "; delCnt:" << delCnt << std::endl;
+
+		for (auto i = 0; i < 100; ++i)
+		{
+				std::ostringstream oss;
+				oss << i << " l";
+				if (i < 50)
+				{
+						ret = redisService.lpushList("l", oss.str());
+						std::cout << ret << std::endl;
+				}
+				else
+				{
+						ret = redisService.rpushList("l", oss.str());
+						std::cout << ret << std::endl;
+				}
+		}
+
+		std::string value;
+		ret = redisService.lpopList("l", value);
+		std::cout << ret << std::endl;
+		ret = redisService.rpopList("l", value);
+		std::cout << ret << std::endl;
+		ret = redisService.llenList("l", len);
+		std::cout << ret << ", llen:" << len << std::endl;
+
+		valueVec.clear();
+		ret = redisService.lrangeList("l", 0, -1, valueVec);
+		std::cout << ret << ", lrangeSize:" << valueVec.size() << std::endl;
+		for (auto &ref : valueVec)
+		{
+				std::cout << "value: " << ref << std::endl;
+		}
+		value.clear();
+		ret = redisService.lindexList("l", 0, value);
+		std::cout << "lindexList: " << value << std::endl;
+		int64_t count = 0;
+		ret = redisService.rpushList("l", "l1");
+		std::cout << ret << std::endl;
+
+		ret = redisService.lremList("l", 0, "l1", count);
+		std::cout << ret << ", lremList: "<< count << std::endl;
+
+		ret = redisService.ltrimList("l", 0, 2);
+		std::cout << ret << std::endl;
+
+		valueVec.clear();
+		ret = redisService.lrangeList("l", 0, -1, valueVec);
+		std::cout << ret << ", lrangeSize:" << valueVec.size() << std::endl;
+		for (auto &ref : valueVec)
+		{
+				std::cout << "value: " << ref << std::endl;
+		}
+
+		/* end list */
+
+		/* set */
+		delCnt = 0;
+		ret = redisService.delKey("s", delCnt);
+		std::cout << ret << ", delCnt: "<< delCnt << std::endl;
+
+		count = 0;
+		ret = redisService.scardSet("s", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		ret = redisService.saddSet("s", "s1", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		ret = redisService.saddSet("s", "s2", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		ret = redisService.saddSet("s", "s1", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		ret = redisService.saddSet("s", "s3", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		ret = redisService.saddSet("s", "s4", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		ret = redisService.saddSet("s", "s5", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+		
+		ret = redisService.saddSet("s", "s3", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+		
+		ret = redisService.saddSet("s", "s5", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.scardSet("s", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		bool ismember = false;
+		ret = redisService.sismemberSet("s", "s1", ismember);
+		std::cout << ret << ", ismember: "<< ismember << std::endl;
+		ret = redisService.sismemberSet("s", "ss1", ismember);
+		std::cout << ret << ", ismember: "<< ismember << std::endl;
+		ret = redisService.sismemberSet("s", "s2", ismember);
+		std::cout << ret << ", ismember: "<< ismember << std::endl;
+		ret = redisService.sismemberSet("s", "ss2", ismember);
+		std::cout << ret << ", ismember: "<< ismember << std::endl;
+		ret = redisService.sismemberSet("s", "s3", ismember);
+		std::cout << ret << ", ismember: "<< ismember << std::endl;
+		ret = redisService.sismemberSet("s", "ss3", ismember);
+		std::cout << ret << ", ismember: "<< ismember << std::endl;
+
+		valueVec.clear();
+		ret = redisService.smembersSet("s", valueVec);
+		std::cout << ret << ", size: "<< valueVec.size() << std::endl;
+		for (auto &ref : valueVec)
+		{
+				std::cout << "value: "<< ref << std::endl;
+		}
+
+		value.clear();
+		ret = redisService.spopSet("s", value);
+		std::cout << ret << ", value: "<< value << std::endl;
+
+		valueVec.clear();
+		ret = redisService.srandmemberSet("s", valueVec, -4);
+		std::cout << ret << ", size: "<< valueVec.size() << std::endl;
+		for (auto &ref : valueVec)
+		{
+				std::cout << "value: "<< ref << std::endl;
+		}
+
+		int64_t remCnt = 0;
+		ret = redisService.sremSet("s", "s1", remCnt);
+		std::cout << ret << ", remCnt: "<< remCnt << std::endl;
+
+		/* end set */
+
+		/* sortset */
+		delCnt = 0;
+		ret = redisService.delKey("zs", delCnt);
+		std::cout << ret << ", delCnt: "<< delCnt << std::endl;
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s1", 1.1, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s2", 2.2, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s2", 2.2, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s2", 2.3, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s3", 3.3, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s4", 4.4, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s5", 5.5, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s6", 6.6, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s7", 7.7, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zaddSortset("zs", "s8", 8.8, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zcardSortset("zs", count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		count = 0;
+		ret = redisService.zcountSortset("zs", 1.1, 3.3, count);
+		std::cout << ret << ", count: "<< count << std::endl;
+
+		double newScore = 0.0;
+		ret = redisService.zincrbySortset("zs", -0.3, "s5", newScore);
+		std::cout << ret << ", newScore: "<< newScore << std::endl;
+
+		vsPairVecType vsVec;
+		ret = redisService.zrangeSortset("zs", 0, 3, vsVec, true);
+		std::cout << ret << ", size: "<< vsVec.size() << std::endl;
+		for (auto &ref : vsVec)
+				std::cout << "member: "<< ref.first << ", score:" << ref.second << std::endl;
+
+		vsVec.clear();
+		ret = redisService.zrangeSortset("zs", -2, -1, vsVec, false);
+		std::cout << ret << ", size: "<< vsVec.size() << std::endl;
+		for (auto &ref : vsVec)
+				std::cout << "member: "<< ref.first << ", score:" << ref.second << std::endl;
+
+		vsVec.clear();
+		ret = redisService.zrangeByScoreSortset("zs", 1.0, 3.0, vsVec, true);
+		std::cout << ret << ", size: "<< vsVec.size() << std::endl;
+		for (auto &ref : vsVec)
+				std::cout << "member: "<< ref.first << ", score:" << ref.second << std::endl;
+
+		vsVec.clear();
+		ret = redisService.zrangeByScoreSortset("zs", 2.0, 0.0, vsVec, false);
+		std::cout << ret << ", size: "<< vsVec.size() << std::endl;
+		for (auto &ref : vsVec)
+				std::cout << "member: "<< ref.first << ", score:" << ref.second << std::endl;
+
+		int64_t rank = (int64_t)-1;
+		ret = redisService.zrankSortset("zs", "s1", rank);
+		std::cout << ret << ", rank: "<< rank << std::endl;
+
+		remCnt = 0;
+		ret = redisService.zremSortset("zs", "s1", remCnt);
+		std::cout << ret << ", remCnt: "<< remCnt << std::endl;
+
+		remCnt = 0;
+		ret = redisService.zremRangeByRankSortset("zs", 0, 1, remCnt);
+		std::cout << ret << ", remCnt: "<< remCnt << std::endl;
+
+		remCnt = 0;
+		ret = redisService.zremRangeByScoreSortset("zs", 4.0, 6.0, remCnt);
+		std::cout << ret << ", remCnt: "<< remCnt << std::endl;
+
+		vsVec.clear();
+		ret = redisService.zrevrangeSortset("zs", 0, 1, vsVec, true);
+		for (auto &ref : vsVec)
+				std::cout << "member: "<< ref.first << ", score:" << ref.second << std::endl;
+
+		std::cout << "xxxxx" << std::endl;
+		vsVec.clear();
+		ret = redisService.zrevrangeByScoreSortset("zs", 5.0, 10.0, vsVec, true);
+		for (auto &ref : vsVec)
+				std::cout << "member: "<< ref.first << ", score:" << ref.second << std::endl;
+
+		rank = (int64_t)-1;
+		ret = redisService.zrevrankSortset("zs", "s8", rank);
+		std::cout << ret << ", rank: "<< rank << std::endl;
+
+		double score = 0.0;
+		ret = redisService.zscoreSortset("zs", "s8", score);
+		std::cout << ret << ", score: "<< score << std::endl;
+
+		/* end sortset */
+
+		/* geo */
+		delCnt = 0;
+		ret = redisService.delKey("geo", delCnt);
+		std::cout << ret << ", delCnt" << delCnt << std::endl;
+
+		ddPairType degree(80, -45);
+		int64_t num = 0;
+		ret = redisService.geoaddGeo("geo", degree, "geo:member1", num);
+		std::cout << ret << ", num:" << num << std::endl;
+
+		degree = std::make_pair(80, -47);
+		num = 0;
+		ret = redisService.geoaddGeo("geo", degree, "geo:member1", num);
+		std::cout << ret << ", num:" << num << std::endl;
+
+		degree = std::make_pair(80, -47);
+		num = 0;
+		ret = redisService.geoaddGeo("geo", degree, "geo:member1", num);
+		std::cout << ret << ", num:" << num << std::endl;
+
+		degree = std::make_pair(80, -50);
+		num = 0;
+		ret = redisService.geoaddGeo("geo", degree, "geo:member1", num);
+		std::cout << ret << ", num:" << num << std::endl;
+
+		degree = std::make_pair(80.0001, -50);
+		num = 0;
+		ret = redisService.geoaddGeo("geo", degree, "geo:member2", num);
+		std::cout << ret << ", num:" << num << std::endl;
+
+		degree = std::make_pair(80.0002, -50);
+		num = 0;
+		ret = redisService.geoaddGeo("geo", degree, "geo:member3", num);
+		std::cout << ret << ", num:" << num << std::endl;
+
+		degree = std::make_pair(80.0003, -45);
+		num = 0;
+		ret = redisService.geoaddGeo("geo", degree, "geo:member4", num);
+		std::cout << ret << ", num:" << num << std::endl;
+
+		degree = std::make_pair(70, -37);
+		num = 0;
+		ret = redisService.geoaddGeo("geo", degree, "geo:member5", num);
+		std::cout << ret << ", num:" << num << std::endl;
+
+		degree = std::make_pair(0, 0);
+		ret = redisService.geoposGeo("geo", "geo:member1", degree);
+		std::cout << ret << ", longtitude:" << degree.first << ", latitude:" << degree.second << std::endl;
+
+		ret = redisService.geoposGeo("geo", "geo:member5", degree);
+		std::cout << ret << ", longtitude:" << degree.first << ", latitude:" << degree.second << std::endl;
+
+		double distM = 0.0;
+		ret = redisService.geodistGeo("geo", "geo:member3", "geo:member2", distM);
+		std::cout << ret << ", distM:" << distM << std::endl;
+
+		distM = 0.0;
+		ret = redisService.geodistGeo("geo", "geo:member3", "geo:member5", distM);
+		std::cout << ret << ", distM:" << distM << std::endl;
+
+		sdPairVecType sdVec;
+		degree = std::make_pair(80, -50);
+		double radius = 10.0;
+		ret = redisService.georadiusGeo("geo", degree, radius, 2, sdVec);
+		std::cout << ret << ", size:" << sdVec.size() << std::endl;
+		for (auto &ref : sdVec)
+				std::cout << "member: " << ref.first << ", dist: " << ref.second << std::endl;
+
+		radius = 10.0;
+		sdVec.clear();
+		ret = redisService.georadiusByMemberGeo("geo", "geo:member1", radius, 10, sdVec);
+		std::cout << ret << ", size:" << sdVec.size() << std::endl;
+		for (auto &ref : sdVec)
+				std::cout << "member: " << ref.first << ", dist: " << ref.second << std::endl;
+
+
+		/* end geo */
+}
