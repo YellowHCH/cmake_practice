@@ -1,21 +1,21 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec3310926327/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3310926327.dir/build.make CMakeFiles/cmTryCompileExec3310926327.dir/build
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3841367958/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3841367958.dir/build.make CMakeFiles/cmTryCompileExec3841367958.dir/build
 gmake[1]: Entering directory `/root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3310926327.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3310926327.dir/CheckSymbolExists.c.o   -c /root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTryCompileExec3310926327
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3310926327.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec3310926327.dir/CheckSymbolExists.c.o  -o cmTryCompileExec3310926327 -rdynamic 
-CMakeFiles/cmTryCompileExec3310926327.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTryCompileExec3841367958.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3841367958.dir/CheckSymbolExists.c.o   -c /root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec3841367958
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3841367958.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec3841367958.dir/CheckSymbolExists.c.o  -o cmTryCompileExec3841367958 -rdynamic 
+CMakeFiles/cmTryCompileExec3841367958.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTryCompileExec3310926327] Error 1
+gmake[1]: *** [cmTryCompileExec3841367958] Error 1
 gmake[1]: Leaving directory `/root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp'
-gmake: *** [cmTryCompileExec3310926327/fast] Error 2
+gmake: *** [cmTryCompileExec3841367958/fast] Error 2
 
 File /root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -35,19 +35,19 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec3709184625/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3709184625.dir/build.make CMakeFiles/cmTryCompileExec3709184625.dir/build
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3968026712/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3968026712.dir/build.make CMakeFiles/cmTryCompileExec3968026712.dir/build
 gmake[1]: Entering directory `/root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3709184625.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec3709184625.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec3709184625
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3709184625.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec3709184625.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3709184625 -rdynamic -lpthreads 
+Building C object CMakeFiles/cmTryCompileExec3968026712.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec3968026712.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3968026712
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3968026712.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec3968026712.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3968026712 -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTryCompileExec3709184625] Error 1
+gmake[1]: *** [cmTryCompileExec3968026712] Error 1
 gmake[1]: Leaving directory `/root/cmake_practice/tencentdays/build/CMakeFiles/CMakeTmp'
-gmake: *** [cmTryCompileExec3709184625/fast] Error 2
+gmake: *** [cmTryCompileExec3968026712/fast] Error 2
 
 

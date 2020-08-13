@@ -59,10 +59,10 @@ CMAKE_BINARY_DIR = /root/cmake_practice/tencentdays/build
 # Target rules for target CMakeFiles/test_exe.dir
 
 # All Build rule for target.
-CMakeFiles/test_exe.dir/all: try_strace/CMakeFiles/strace_try.dir/all
+CMakeFiles/test_exe.dir/all: try_coroutine/CMakeFiles/coroutine_try.dir/all
 CMakeFiles/test_exe.dir/all: sub1/CMakeFiles/subLib.dir/all
 CMakeFiles/test_exe.dir/all: try_gdb/CMakeFiles/pdb_try.dir/all
-CMakeFiles/test_exe.dir/all: try_coroutine/CMakeFiles/coroutine_try.dir/all
+CMakeFiles/test_exe.dir/all: try_strace/CMakeFiles/strace_try.dir/all
 	$(MAKE) -f CMakeFiles/test_exe.dir/build.make CMakeFiles/test_exe.dir/depend
 	$(MAKE) -f CMakeFiles/test_exe.dir/build.make CMakeFiles/test_exe.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /root/cmake_practice/tencentdays/build/CMakeFiles  8
