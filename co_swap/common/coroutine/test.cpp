@@ -27,7 +27,7 @@ using namespace goddard;
 
 void fun1(void *args)
 {
-	arg_coroutine *arg = (arg_coroutine *)args; // set coroutine args
+	arg_coroutine *arg = (arg_coroutine *)args;
 	puts("fun1 111");
 	coroutine_yield((schedule *)arg->s);
 	puts("fun1 222");
@@ -72,7 +72,6 @@ void sigHandle(int num)
 
 int main()
 {
-        // creat new schedule obj
 	s = schedule_new();
 	if (NULL == s)
 	{
@@ -81,7 +80,6 @@ int main()
 
 	int count = 0;
 	srandom(time(NULL));
-        // set signal process function
 	signal(SIGINT, sigHandle);
 
 	while (1)
@@ -89,11 +87,9 @@ int main()
 		if (count < MAX_COROUTINE_SIZE)
 		{
 			++count;
-                        // make argument for coroutine
 			arg_coroutine *arg = (arg_coroutine*)malloc(sizeof(arg_coroutine));
 			arg->s = s;
 			arg->id = count;
-                        //  add new coroutine to schedule
 			printf("create %d, count: %d\n", coroutine_create(s, fun1, (void *)arg), count);
 		}
 		else
@@ -107,8 +103,7 @@ int main()
 		int r = 0;
 		r = random() % count;
 //		printf("coroutine_resume %d, use_count: %d\n", r, schedule_usecount(s));
-                // resume routine randomly
-                coroutine_resume(s, r);
+		coroutine_resume(s, r);
 		usleep(10);
 	}
 	puts("finished\n");

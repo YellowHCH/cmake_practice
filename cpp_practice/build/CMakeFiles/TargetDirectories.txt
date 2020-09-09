@@ -1,0 +1,4 @@
+D:/myCourse/c++/cmake_practice/cpp_practice/build/CMakeFiles/mySortTest.dir
+D:/myCourse/c++/cmake_practice/cpp_practice/build/CMakeFiles/ALL_BUILD.dir
+D:/myCourse/c++/cmake_practice/cpp_practice/build/CMakeFiles/ZERO_CHECK.dir
+D:/myCourse/c++/cmake_practice/cpp_practice/build/lib/CMakeFiles/mymath.dir

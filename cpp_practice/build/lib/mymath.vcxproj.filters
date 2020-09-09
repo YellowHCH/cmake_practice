@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\myCourse\c++\cmake_practice\cpp_practice\lib\add.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\myCourse\c++\cmake_practice\cpp_practice\lib\mysort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\myCourse\c++\cmake_practice\cpp_practice\lib\sub.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\myCourse\c++\cmake_practice\cpp_practice\lib\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{B62EB5CE-A129-3E82-935B-B851D67935C0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
