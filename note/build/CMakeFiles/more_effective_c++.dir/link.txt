@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/more_effective_c++.dir/more_effective_c++.cpp.o  -o more_effective_c++ -rdynamic 

@@ -1,1 +1,0 @@
-/usr/bin/c++  -fPIC  -std=c++11 -g   -shared -Wl,-soname,libsubLib.so -o ../../lib/libsubLib.so CMakeFiles/subLib.dir/src/myThreadPool.cpp.o CMakeFiles/subLib.dir/src/mymethod.cpp.o CMakeFiles/subLib.dir/src/myMemoryPool.cpp.o CMakeFiles/subLib.dir/src/test_cast.cpp.o -lpthread 

@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -O3 -DNDEBUG  -rdynamic CMakeFiles/exe_name.dir/src/main.cpp.o  -o ../bin/exe_name -Wl,-rpath,/home/chhuang/hch/cpp/template/template/lib ../lib/libsubLib.so -lpthread 

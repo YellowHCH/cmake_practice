@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11 -g    CMakeFiles/test_exe.dir/src/main.cpp.o  -o ../bin/test_exe -rdynamic ../lib/libsubLib.so ../lib/libpdb_try.so ../lib/libstrace_try.so ../lib/libcoroutine_try.so -lpthread -Wl,-rpath,/root/cmake_practice/tencentdays/lib 

@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -std=c++11 -O3 -DNDEBUG  -shared -Wl,-soname,libsubLib.so -o ../../lib/libsubLib.so CMakeFiles/subLib.dir/src/myThreadPool.cpp.o CMakeFiles/subLib.dir/src/mymethod.cpp.o -lpthread 
