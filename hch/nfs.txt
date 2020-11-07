@@ -1,0 +1,31 @@
+/*
+        how to build nfs server && nfs client
+*/
+########################################################
+nfs server
+1. build folder for share files:
+mkdir xxx/xxx/ngs_share
+sudo vim /etc/export # add xxx/xxx/nfs_share/ *(rw,sync,np_root_squash)
+2. install nfs-kernel-server && rpcbind
+sudo apt-get install nfs-kernel-server rpcbind
+3. run server
+sudo /etc/init.d/rpcbind
+sudo /etc/init.d/nfs-kernel-server
+4. check ip
+ifconfig
+########################################################
+nfs client
+1. prepare folder for share nfs
+mkdir xxx/xxx/nfs_share
+2. check ip
+ifconfig
+3. mount network file system
+mount -t nfs -o nolock 192.168.xxx.xxx:/path/to/server/ xxx/xxx/nfs_share
+4. umount nfs
+umount xxx/xxx/nfs_share
+5. check filesystem
+df
+########################################################
+nfs client(windows)
+1. 控制面板->程序和功能->启用NFS
+2. win+R，\\serverip即可
