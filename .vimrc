@@ -32,9 +32,33 @@ set expandtab
 set autoindent
 map <C-t> :NERDTreeToggle<CR>
 "autocmd vimenter * NERDTree
+let g:NERDTreeShowLineNumbers=1
+let g:NERDTreeHidden=0
+let g:NERDTreeSize=10
+
+"" config tagbar
+map <S-t> :TagbarToggle<CR>
 
         " Show EOL type and last modified timestamp, right after the filename
 set statusline=%<%F%h%m%r\ [%{&ff}]\ (%{strftime(\"%H:%M\ %d/%m/%Y\",getftime(expand(\"%:p\")))})%=%l,%c%V\ %P
+
+" 你在此设置运行时路径
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+" 在这里面输入安装的插件
+" Vundle 本身就是一个插件
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+
+
+"所有插件都应该在这一行之前
+call vundle#end()
+
+" filetype off
+filetype plugin indent on
 
 "------------------------------------------------------------------------------
 " Only do this part when compiled with support for autocommands.
