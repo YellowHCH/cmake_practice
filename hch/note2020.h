@@ -5,3 +5,12 @@
  * 3. git add . && git commit -m'xxx'
 */
 
+/*
+ * dev environment for arm linux
+ * sudo apt-get install gcc-arm-none-eabi
+ */
+
+/*
+ * git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+ * */
