@@ -18,6 +18,7 @@ alias l='ls'
 alias ll='ls -l'
 alias s='du -h --max-depth=0'
 alias s1='du -h --max-depth=1'
+alias grep='grep --color=auto'
 LC_CTYPE="zh_CN.utf8"
 PS1="\[\033[01;31m\]\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\][\[\033[01;33m\]\t\[\033[00m\]]:\[\033[01;34m\]\w\[\033[00m\] $ "
 
