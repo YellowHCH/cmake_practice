@@ -2,3 +2,6 @@
 */bin/
 */lib/
 tags
+*.exe
+*.o
+*.pdb
