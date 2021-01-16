@@ -18,6 +18,7 @@ set completeopt=preview,menu    " auto complete
 set clipboard+=unnamed          " share cut table
 set autowrite
 set cursorline              " 突出显示当前行
+highlight CursorLine   cterm=NONE ctermbg=darkgray ctermfg=NONE
 set guifont=Courier\New:h16:b:cDEFAULT" 设置字体
 autocmd InsertLeave * se nocul " 用浅色高亮当前行
 autocmd InsertEnter * se cul " 用浅色高亮当前行
