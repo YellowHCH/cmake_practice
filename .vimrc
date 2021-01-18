@@ -53,7 +53,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
-
+Plugin 'taghighlight'
 
 "所有插件都应该在这一行之前
 call vundle#end()
