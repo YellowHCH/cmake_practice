@@ -53,10 +53,23 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
-Plugin 'taghighlight'
+"Plugin 'taghighlight'
+Plug 'justinmk/vim-syntax-extra'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 "所有插件都应该在这一行之前
 call vundle#end()
+
+"""
+"cpp-enhanced-highlight
+"高亮类，成员函数，标准库和模板
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_concepts_highlight = 1
+"let g:cpp_experimental_simple_template_highlight = 1
+"文件较大时使用下面的设置高亮模板速度较快，但会有一些小错误
+let g:cpp_experimental_template_highlight = 1
+"""
 
 " filetype off
 filetype plugin indent on
