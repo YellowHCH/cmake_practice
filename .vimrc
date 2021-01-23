@@ -54,8 +54,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 "Plugin 'taghighlight'
-Plug 'justinmk/vim-syntax-extra'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plugin 'justinmk/vim-syntax-extra'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 "所有插件都应该在这一行之前
 call vundle#end()
