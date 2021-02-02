@@ -45,6 +45,7 @@ enum {
 /*
   coroutine stack info
   regs: registor for used to matain context
+  ss_sp: coroutine stack top address
 */
 struct coctx_t
 {
@@ -54,7 +55,8 @@ struct coctx_t
 
 };
 
-// pointer of routine function 
+// pointer of routine function
+// interface to exec routine function
 typedef void *(*pfn_co_routine_t)( void * );
 
 /*
@@ -62,6 +64,13 @@ typedef void *(*pfn_co_routine_t)( void * );
   pfn: function
   ctx: function enviroment
   arg: arguments belong to pfn
+  stroutine --> pfn
+            --> arg
+            --> ctx --> regs[]         stack
+                    --> ss_sp ----> ----------
+                                    |_________|
+                                    |_________|
+                                    |_________|
 */
 struct stroutine
 {
@@ -71,6 +80,11 @@ struct stroutine
 };
 
 // interface to make stack for coroutine
+// param
+// ctx: coroutine stack information
+// pfn: coroutine function entry
+// s:   regs[last-1]
+// s1:  regs[last]
 int ctx_make(coctx_t *ctx, pfn_co_routine_t pfn, const void *s, const void *s1);
 
 // init coroutine(expecialy stack mem)

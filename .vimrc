@@ -50,13 +50,15 @@ call vundle#begin()
 
 " 在这里面输入安装的插件
 " Vundle 本身就是一个插件
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
+Plugin 'VundleVim/Vundle.vim'
+"Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 "Plugin 'taghighlight'
 Plugin 'justinmk/vim-syntax-extra'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
+Bundle 'The-NERD-tree'
+Bundle 'The-NERD-Commenter'
 "所有插件都应该在这一行之前
 call vundle#end()
 
