@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
     //test_strace();
     //print_func(argv);
     //test_gdb_with_args(argc, argv);
-    //test_gdb_with_core();
-    print_coroutine(argv);
+    test_gdb_with_core();
+    //print_coroutine(argv);
     return 0;
 }

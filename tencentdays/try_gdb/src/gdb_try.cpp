@@ -35,7 +35,8 @@ namespace hch{
         {
                 std::cout << "generate coredump ...\n";
                 int *tmpPtr = nullptr;
-                //*tmpPtr = 0;
+                *tmpPtr = 0;
+#if 0
                 int tt = -1;
                 uint16_t tt16 = static_cast<uint16_t>(tt);
                 short tf = 0;
@@ -56,5 +57,6 @@ namespace hch{
                 std::cout << "sStr[" << strlen(sStr) << "]  :" << sStr << "\n";
 
                 delete [] sStr;
+#endif
         }
 }
