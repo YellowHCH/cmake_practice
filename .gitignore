@@ -5,3 +5,4 @@ tags
 *.exe
 *.o
 *.pdb
+cscope.*

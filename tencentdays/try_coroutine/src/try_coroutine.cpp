@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
-
+#if 0
 static int & GetNum()
 {
         static int num;
@@ -42,11 +42,12 @@ static bool MergeNum(std::list<int> & vec, int & count)
         }
         return false;
 }
+#endif
 
 void print_coroutine(char *argv[])
 {
-        //std::cout << "coroutine: " << argv[1] << std::endl;
-        //std::cout << "cwd: " << argv[0] << std::endl;
+        std::cout << "coroutine: " << argv[1] << std::endl;
+        std::cout << "cwd: " << argv[0] << std::endl;
 #if 0
         char * src1 = nullptr;
         char des[100] = {0};
@@ -63,7 +64,7 @@ void print_coroutine(char *argv[])
         
         
 }
-
+#if 0
 struct MultiTreeNode{
         MultiTreeNode(int num, int d = 0, int toRoot) : dis = d{childs.clear();, disToRoot = toRoot;}
         int dis;
@@ -81,7 +82,7 @@ void Dis()
         //V.reserve(n-1);
         //W.reserve(n-1);
         std::vector<std::vector<int>> mMap(n, std::vector<int>(n, 0));
-        for(int i = 0; i < n; ++i){
+        OB for(int i = 0; i < n; ++i){
                 int u, v, w;
                 cin >> u, v, w;
                 mMap[u][v] = w;
@@ -119,6 +120,6 @@ void Dis()
         //
         
 }
-
+#endif
 
 
