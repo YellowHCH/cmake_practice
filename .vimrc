@@ -11,24 +11,26 @@ set background=dark             " Use colours that work well on a dark backgroun
 set showmode                    " show the current mode
 set clipboard=unnamed           " set clipboard to unnamed to access the system clipboard under windows
 syntax on                       " turn syntax highlighting on by default
-colorscheme elflord
+colorscheme desert "elflord
 set number
 set hlsearch                    " highlight search
 set completeopt=preview,menu    " auto complete
 set clipboard+=unnamed          " share cut table
 set autowrite
 set cursorline              " 突出显示当前行
-highlight CursorLine   cterm=NONE ctermbg=darkgray ctermfg=NONE
+"highlight CursorLine   cterm=NONE ctermbg=darkgray ctermfg=NONE
 set guifont=Courier\New:h16:b:cDEFAULT" 设置字体
+hi Search term=standout ctermfg=0 ctermbg=11 guifg=orangered guibg=yellow2 
+
 autocmd InsertLeave * se nocul " 用浅色高亮当前行
 autocmd InsertEnter * se cul " 用浅色高亮当前行
 set ruler " 显示标尺 
-set scrolloff=6 " 光标移动到buffer的顶部和底部时保持3行距离
+set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离
 set fdm=marker  " 代码折叠
 
-set ts=8
-set softtabstop=8
-set shiftwidth=8
+set ts=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set autoindent
 map <C-t> :NERDTreeToggle<CR>
@@ -43,6 +45,16 @@ map <S-t> :TagbarToggle<CR>
         " Show EOL type and last modified timestamp, right after the filename
 set statusline=%<%F%h%m%r\ [%{&ff}]\ (%{strftime(\"%H:%M\ %d/%m/%Y\",getftime(expand(\"%:p\")))})%=%l,%c%V\ %P
 
+"""""""""""""""""""""
+nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>                                                                                                                                              
+nmap <C-[>g :cs find g <C-R>=expand("<cword>")<CR><CR>  
+nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>  
+nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>  
+nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>  
+nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>  
+nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+"""""""""""""""""""""
 " 你在此设置运行时路径
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -50,13 +62,16 @@ call vundle#begin()
 
 " 在这里面输入安装的插件
 " Vundle 本身就是一个插件
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
+Plugin 'VundleVim/Vundle.vim'
+"Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 "Plugin 'taghighlight'
 Plugin 'justinmk/vim-syntax-extra'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-
+Bundle 'The-NERD-tree'
+Bundle 'The-NERD-Commenter'
+"Bundle 'ycm-core/YouCompleteMe'
+Bundle 'cscope_maps.vim'
 "所有插件都应该在这一行之前
 call vundle#end()
 
