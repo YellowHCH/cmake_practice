@@ -31,6 +31,9 @@ set fdm=marker  " 代码折叠
 set ts=4
 set softtabstop=4
 set shiftwidth=4
+set encoding=utf-8                                                                                                                                                                                      
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set fenc=cp936
 set expandtab
 set autoindent
 map <C-t> :NERDTreeToggle<CR>
