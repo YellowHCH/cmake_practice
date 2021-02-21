@@ -64,6 +64,57 @@ void print_coroutine(char *argv[])
         
         
 }
+
+void test_ucontext()
+{
+	ucontext_t ctx;
+	// get current context, routine will resume at this point
+	getcontext(&ctx);
+
+	static int cnt = 0;
+	std::cout << "current coroutine cnt: " << cnt++ << std::endl;
+	if (cnt > 10) {return;}
+//	getcontext(&ctx);
+	std::cout << "##" << std::endl;
+	// set cts as next task, back to where getcontext be called
+	setcontext(&ctx);
+	return;
+}
+
+void coFun1(char* str)
+{
+	std::cout << "coFun1 str: " << str << std::endl;
+	return;
+}
+
+void coFun2()
+{
+	std::cout << "coFun2" << std::endl;
+}
+
+void (*coFun)(void);
+
+void test_ucontext2()
+{
+	ucontext_t main_ctx, ctx1;
+	static char cStack[1024];
+	getcontext(&ctx1);
+	ctx1.uc_stack.ss_sp = cStack;
+	ctx1.uc_stack.ss_size = sizeof(cStack);
+	ctx1.uc_link = &main_ctx;
+	char str[] = "TENCENT";
+	coFun = coFun2; 
+	makecontext(&ctx1, (void (*)(void))coFun1, 1, str);
+
+	std::cout << "leave main fun && goto coFun1" << std::endl;
+	swapcontext(&main_ctx, &ctx1);
+	std::cout << "resume main fun && goto coFun2" << std::endl;
+	makecontext(&ctx1, (void (*)(void))coFun, 0);
+	swapcontext(&main_ctx, &ctx1);
+	std::cout << "end" <<std::endl;
+	return;
+}
+
 #if 0
 struct MultiTreeNode{
         MultiTreeNode(int num, int d = 0, int toRoot) : dis = d{childs.clear();, disToRoot = toRoot;}
