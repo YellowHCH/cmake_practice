@@ -17,6 +17,9 @@ int main(int argc, char* argv[]){
     //test_gdb_with_core();
     //print_coroutine(argv);
 	//test_ucontext2();
-	vectoratloop();
+//	vectoratloop();
+//	GetFileContent(argv[1]);
+	ExeExTask();
+
 	return 0;
 }
