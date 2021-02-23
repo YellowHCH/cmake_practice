@@ -16,6 +16,7 @@ int main(int argc, char* argv[]){
     //test_gdb_with_args(argc, argv);
     //test_gdb_with_core();
     //print_coroutine(argv);
-    test_ucontext2();
+	//test_ucontext2();
+	vectoratloop();
 	return 0;
 }

@@ -2,6 +2,7 @@
 #include <list>
 #include <stdio.h>
 #include <unistd.h>
+#include <vector>
 
 void test_strace()
 {
@@ -18,4 +19,22 @@ void test_strace()
 void print_func(char* argv[])
 {
   std::cout << "__fun__ " <<  argv[0] << std::endl;
+}
+
+void vectoratloop(){
+	std::vector<int> v1;
+	int idx = 10;
+	while (idx > 0)
+	{
+		for (int i = 0; i < idx; ++i)
+		{
+			v1.push_back(i);
+		}
+		--idx;
+	}
+	for (auto it : v1)
+	{
+		std::cout << it << " ";
+	}
+	return;
 }
