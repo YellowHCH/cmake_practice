@@ -11,6 +11,7 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 export PATH="$PATH:$HOME/.ft"
+export LESSCHARSET=utf-8
 source ~/.git-completion.bash
 #source ~/.git-completion.bash
 alias python='/usr/bin/python3.6'

@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 	//test_ucontext2();
 //	vectoratloop();
 //	GetFileContent(argv[1]);
-	ExeExTask();
-
+//	ExeExTask();
+	test_joy();
 	return 0;
 }
