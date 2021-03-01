@@ -20,6 +20,7 @@ int main(int argc, char* argv[]){
 //	vectoratloop();
 //	GetFileContent(argv[1]);
 //	ExeExTask();
-	test_joy();
+//	test_joy();
+	testMem();
 	return 0;
 }
