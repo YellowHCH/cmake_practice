@@ -63,6 +63,7 @@ void testMem()
 		{
 			std::cout << "release 10k, idx=" << idx <<std::endl; 
 			usleep(1000);
+			// release mem for system
 			malloc_trim(0);
 		}
         int * ppTmp = vpMem[idx];
