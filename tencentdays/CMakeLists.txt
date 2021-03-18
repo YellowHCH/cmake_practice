@@ -19,7 +19,17 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 # 设置源代码位置
 aux_source_directory(./src DIR_SRCS)
 # 设置当前项目的头文件搜索路径
-include_directories(./include ./sub1/include ./try_gdb/include ./try_strace/include ./try_coroutine/include ./joy/include)
+include_directories(
+	./include 
+	./sub1/include 
+	./try_gdb/include 
+	./try_strace/include 
+	./try_coroutine/include 
+	./joy/include 
+	./ObjPool/include
+	./ThreadPoll/include
+	./Log/include
+	)
 
 # 添加子目录
 add_subdirectory(sub1)
@@ -27,6 +37,9 @@ add_subdirectory(try_gdb)
 add_subdirectory(try_strace)
 add_subdirectory(try_coroutine)
 add_subdirectory(joy)
+add_subdirectory(ObjPoll)
+add_subdirectory(ThreadPoll)
+add_subdirectory(Log)
 
 # 生成可执行文件
 add_executable(test_exe ${DIR_SRCS})
@@ -36,3 +49,6 @@ target_link_libraries(test_exe pdb_try)
 target_link_libraries(test_exe strace_try)
 target_link_libraries(test_exe coroutine_try)
 target_link_libraries(test_exe joy)
+target_link_libraries(test_exe objpoll)
+target_link_libraries(test_exe threadpoll)
+target_link_libraries(test_exe myLog)
