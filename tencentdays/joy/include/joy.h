@@ -35,6 +35,15 @@ class ObjSize{
 		InsertObj  *m_pInsertobj;
 };
 
+class MemCheck{
+	public:
+		MemCheck();
+		~MemCheck();
+		std::string m_sMsg = "bbbbbbbbbdfjebfjhebsjhbfhjrbsAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+		void ShowMsg();
+};
+
+
 void test_joy(void);
 
 const int NUM_OF_MINHASH = 100*1000;
