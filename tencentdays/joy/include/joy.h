@@ -4,6 +4,11 @@
 #include <vector>
 #include <unistd.h>
 #include <malloc.h>
+#include <memory>
+#include <functional>
+#include <thread>
+#include <chrono>
+#include <mutex>
 
 /*
  * some feature test
@@ -79,3 +84,19 @@ void testMem()
         delete []ppTmp;
     }
 }
+
+class PtrEle{
+	public:
+	PtrEle(){std::cout << "PtrEle Construct\n"; }
+	virtual ~PtrEle(){std::cout << "PtrEle Destory\n";}
+	virtual void f(); 
+};
+
+class DPtrEle : public PtrEle{
+	public:
+	DPtrEle(){std::cout << "DPtrEle Construct\n";}
+	virtual ~DPtrEle() {std::cout << "DPtrEle Destory\n";}
+	virtual void f();
+};
+
+void test_ptr();
