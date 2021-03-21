@@ -41,12 +41,22 @@ void DPtrEle::f()
 }
 
 void thread_fun_ptr(std::shared_ptr<PtrEle> p){
+	g_Count++;
 	std::this_thread::sleep_for(std::chrono::seconds(1));
 	std::shared_ptr<PtrEle> localSp = p;
+	void *ptr = malloc(1024*1);
+//	int num = 0;
+//	int *ptr = &num;
+//	printf("C style, current thread id:%lu\tg_count:%u\n", std::this_thread::get_id(), g_Count);
+	// std io is not thread safe
 	static std::mutex io_mutex;
-	std::lock_guard<std::mutex> lk(io_mutex);
-	std::cout << "current thread id:" << std::this_thread::get_id() << "\tuse_cnt:" << localSp.use_count() << std::endl;
-
+	{
+		std::lock_guard<std::mutex> lk(io_mutex);
+//		void *ptr = malloc(8);
+		std::cout << "current thread id:" << std::this_thread::get_id() << "\tuse_cnt:" << localSp.use_count() << "\tg_Count:" << g_Count << "\tptrAddr:"<< (ptr)<< std::endl;
+//		free(ptr);
+	}
+	free(ptr);
 }
 
 void test_ptr()
@@ -83,7 +93,8 @@ void test_ptr()
 		printf("\n------------test shared_ptr--------------\n");
 		std::shared_ptr<PtrEle> spEle = std::make_shared<PtrEle>();
 		std::vector<std::thread> vecThr;
-		for ( int idx = 0; idx < 5; ++idx){
+		const uint32_t THREAD_NUM = 10;
+		for ( int idx = 0; idx < THREAD_NUM; ++idx){
 			std::thread thr(thread_fun_ptr, spEle);
 			vecThr.push_back(std::move(thr));
 		}

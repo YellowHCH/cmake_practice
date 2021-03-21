@@ -9,10 +9,13 @@
 #include <thread>
 #include <chrono>
 #include <mutex>
+#include <cstring>
 
 /*
  * some feature test
  * */
+
+thread_local uint32_t g_Count = 0;
 
 class InsertObj{
 	public:
