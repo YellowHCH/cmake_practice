@@ -132,3 +132,143 @@ void test_ptr()
 		}
 	}
 }
+
+// epoll base
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <sys/epoll.h>
+#include <unistd.h>
+#include <netinet/in.h>
+
+// create socket and bind to specificed IP:PORT
+// return socket for communication
+static int socket_bind(const char *IP, int PORT);
+// deal with listenfd
+const int EPOLL_CONNECT_SIZE = 100;
+const int EPOLL_EVENTS_SIZE  = 10; 
+static int deal_epoll(int listenfd);
+static void process_epoll_events(int epollfd, epoll_event *events, int num, int listenfd);
+// epoll unit
+static int process_accept(int epollfd, int listenfd);
+static int add_event(int epollfd, int fd, int state);
+static int del_event(int epollfd, int fd, int state);
+static int modify_event(int epollfd, int fd, int state);
+// IO socket
+static int sock_write(int epollfd, int fd);
+static int sock_read(int epollfd, int fd);
+
+void test_epoll_server()
+{
+
+}
+
+void test_epoll_client()
+{
+
+}
+
+int socket_bind(const char *IP, int PORT)
+{
+	int listenfd = 0;
+	if( (listenfd = socket(AF_INET, SOCK_STREAM, 0) ) == -1)
+	{
+		perror("ERR: create socket err ");
+		exit(1);
+	}
+	sockaddr_in svraddr;
+	bzero(&svraddr, sizeof(svraddr));
+	svraddr.sin_family = AF_INET;
+	// set and bind IP:PORT
+	inet_pton(AF_INET, IP, &svraddr.sin_addr);
+	svraddr.sin_port = htons(PORT);
+	if (bind(listenfd, (struct sockaddr*)&svraddr, sizeof(svraddr)) == -1){
+		perror("ERR: bind IP:PORT failure ");
+		exit(1);
+	}
+	return listenfd;
+}
+
+int deal_epoll(int listenfd)
+{
+	int epollfd;
+	epollfd = epoll_create(EPOLL_CONNECT_SIZE);
+	add_event(epollfd, listenfd, EPOLLIN);
+	struct epoll_event events[EPOLL_EVENTS_SIZE];
+
+	for (;;){
+		int event_num = epoll_wait(epollfd, events, EPOLL_EVENTS_SIZE, -1);
+		process_epoll_events(epollfd, events, event_num, listenfd);
+	}
+
+	close(epollfd);
+}
+
+void process_epoll_events(int epollfd, epoll_event *events, int num, int listenfd)
+{
+	// process each event
+	int fd;
+	for (int i = 0; i < num; ++i){
+		fd = events[i].data.fd;
+		
+		if (events[i].events & EPOLLERR || events[i].events & EPOLLHUP)
+		{
+			// sock err or hup
+			del_event(epollfd, fd, EPOLLHUP);
+			close(fd);
+			continue;
+		}
+
+		if (fd == listenfd){
+			// deal with new conection
+
+		}
+		else if (events[i].events & EPOLLIN){
+			// deal with readable event
+
+		}
+		else if (events[i].events & EPOLLOUT){
+			// deal with wruteable event
+
+		}
+	}
+}
+
+int process_accept(int epollfd, int listenfd)
+{
+	int clifd;
+	struct sockaddr_in cliaddr;
+	socklen_t  cliaddrlen;
+	clifd = accept(listenfd, (struct sockaddr*)&cliaddr, &cliaddrlen);
+	if (clifd == -1){
+		printf("accept err\n");
+		return -1;
+	}
+	else {
+		printf("fd:%d accept new conection %d, ip:%s, port:%d\n", listenfd, clifd, inet_ntoa(cliaddr.sin_addr), cliaddr.sin_port);
+		add_event(epollfd, clifd, EPOLLIN);
+	}
+}
+
+int add_event(int epollfd, int fd, int state)
+{
+	epoll_event ev;
+	ev.events = state;
+	ev.data.fd = fd;
+	return epoll_ctl(epollfd, EPOLL_CTL_ADD, fd, &ev);
+}
+
+int del_event(int epollfd, int fd, int state)
+{
+	epoll_event ev;
+	ev.events = state;
+	ev.data.fd = fd;
+	return epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, &ev);
+}
+
+int modify_event(int epollfd, int fd, int state)
+{
+	epoll_event ev;
+	ev.events = state;
+	ev.data.fd = fd;
+	return epoll_ctl(epollfd, EPOLL_CTL_MOD, fd, &ev);
+}

@@ -4,3 +4,6 @@
 [submodule "folly"]
 	path = folly
 	url = git@github.com:YellowHCH/folly.git
+[submodule "libco"]
+	path = libco
+	url = https://github.com/YellowHCH/libco.git

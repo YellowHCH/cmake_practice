@@ -103,3 +103,7 @@ class DPtrEle : public PtrEle{
 };
 
 void test_ptr();
+
+void test_epoll_server();
+
+void test_epoll_client();
