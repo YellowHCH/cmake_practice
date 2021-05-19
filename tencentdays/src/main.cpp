@@ -22,6 +22,7 @@ int main(int argc, char* argv[]){
 //	ExeExTask();
 //	test_joy();
 //	testMem();
-	test_ptr();
+//	test_ptr();
+	test_tokenizer();
 	return 0;
 }
