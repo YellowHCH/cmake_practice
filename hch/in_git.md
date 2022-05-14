@@ -1,7 +1,14 @@
 * git operate
 
-# ¼Ç×¡ÃÜÂë
-²Ö¿âÂ·¾¶ÏÂ£¬ÅäÖÃ.git/config£¬ Ìí¼Ó [credential] helper = store
+### è®°ä½å¯†ç 
+ä»“åº“è·¯å¾„ä¸‹ï¼Œé…ç½®.git/configï¼Œ æ·»åŠ  [credential] helper = store
 
-# ÅäÖÃutf-8
+### é…ç½®utf-8
 
+### æ¸…é™¤æ–‡ä»¶
+
+### è¡¥ä¸
+
+### tab è¡¥å…¨å‘½ä»¤
+
+### 
