@@ -19,11 +19,12 @@ create Dockerfile and then `docker build xxx`
 **TODO**
 ### *从image运行container*
 `docker run -it <image_name> /bin/bash`
-查看参数 `docker run --help`
--d 运行但不进入，即后台运行
--t 终端
--i 交互式操作
-
+查看参数 `docker run --help`  
+-d 运行但不进入，即后台运行  
+-t 终端  
+-i 交互式操作  
+**TODO**  show more cmd  
+ref [run/login container decent](https://github.com/YellowHCH/cmake_practice/blob/master/hch/start_docker_with_user.sh.sh)
 ### *查看容器*
 `docker ps -a`
 ### *启动停止的容器*
