@@ -7,3 +7,6 @@
 [submodule "libco"]
 	path = libco
 	url = https://github.com/YellowHCH/libco.git
+[submodule "cmake-examples"]
+	path = cmake-examples
+	url = https://github.com/ttroy50/cmake-examples
