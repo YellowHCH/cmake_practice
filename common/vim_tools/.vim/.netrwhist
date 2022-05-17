@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/data/chenhui.huang/workspace/torch-mlir/lib/Conversion/TorchToTosa'
+let g:netrw_dirhist_1='/data/chenhui.huang/workspace/torch-mlir/lib/CAPI'
+let g:netrw_dirhist_0='/data/chenhui.huang/workspace/torch-mlir/lib'
+let g:netrw_dirhist_9='/data/chenhui.huang/workspace/torch-mlir'
+let g:netrw_dirhist_8='/data/chenhui.huang/software/cmake_practice/cmake-examples/03-code-generation/configure-files'
+let g:netrw_dirhist_7='/data/chenhui.huang/tools/dev_tools'
+let g:netrw_dirhist_6='/data/chenhui.huang/tools'
+let g:netrw_dirhist_5='/data/chenhui.huang/tools/dev_tools'
+let g:netrw_dirhist_4='/data/chenhui.huang/MTensorRT/third_party/tensorflow/tensorflow/compiler/xla'
+let g:netrw_dirhist_3='/data/chenhui.huang/MTensorRT/third_party/tensorflow/tensorflow/compiler'
