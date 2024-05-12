@@ -10,3 +10,6 @@
 [submodule "cmake-examples"]
 	path = cmake-examples
 	url = https://github.com/ttroy50/cmake-examples
+[submodule "lazy_load_library"]
+	path = lazy_load_library
+	url = https://github.com/YellowHCH/lazy_load_library.git
