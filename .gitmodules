@@ -1,9 +1,6 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule "folly"]
-	path = folly
-	url = git@github.com:YellowHCH/folly.git
 [submodule "libco"]
 	path = libco
 	url = https://github.com/YellowHCH/libco.git
@@ -13,3 +10,6 @@
 [submodule "lazy_load_library"]
 	path = lazy_load_library
 	url = https://github.com/YellowHCH/lazy_load_library.git
+[submodule "leveldb"]
+	path = leveldb
+	url = https://github.com/google/leveldb.git
